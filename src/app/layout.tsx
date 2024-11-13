@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import Navbar from "@/components/Shared/Navbar";
+import About from "@/components/Home/About";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} bg-slate-900 ${geistMono.variable} antialiased`}
       >
-        <TracingBeam className="px-6">{children}</TracingBeam>
+        <div className=" overflow-y-hidden">
+          <Navbar />
+          <TracingBeam className="">{children}</TracingBeam>
+          <About />
+        </div>
       </body>
     </html>
   );
