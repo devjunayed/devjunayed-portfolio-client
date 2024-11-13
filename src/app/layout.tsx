@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} bg-slate-900 ${geistMono.variable} antialiased`}
       >
-        {children}
+        <TracingBeam className="px-6">{children}</TracingBeam>
       </body>
     </html>
   );
