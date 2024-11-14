@@ -33,7 +33,9 @@ export default function RootLayout({
       >
         <div className=" overflow-y-hidden">
           <Navbar />
-          <TracingBeam className="">{children}</TracingBeam>
+          <TracingBeam className="">
+            {children}
+            </TracingBeam>
           <About />
         </div>
       </body>

@@ -1,3 +1,4 @@
+import { HomeIcon, InfoIcon, MailIcon, } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -6,18 +7,31 @@ const Navbar = () => {
     {
       title: "Home",
       path: "/",
+      icon: <HomeIcon />
     },
     {
       title: "About",
       path: "#about",
+      icon: <InfoIcon />
     },
   ];
   return (
-    <div className="navbar bg-slate-900 shadow-md shadow-gray-600 mb-2">
+    <div className="navbar fixed z-50 bg-slate-900 shadow-md shadow-gray-600 mb-2">
       <div className="navbar-start flex">
-        {/* Drawer start */}
-        <div className="drawer w-7 ">
-          <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+     
+        <a className=" text-xl flex items-center gap-4"><MailIcon /> mdjunayed601@gmail.com</a>
+      </div>
+      <div className="navbar-end ">
+        <ul className="menu menu-horizontal px-1 hidden lg:flex">
+          {links.map((link) => (
+            <li key={link.title}>
+              <Link href={link.path}>{link.icon} {link.title}</Link>
+            </li>
+          ))}
+        </ul>
+           {/* Drawer start */}
+           <div className="drawer drawer-end w-7 ">
+          <input id="my-drawer-3" type="checkbox" className="drawer-toggle " />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
             <div className="flex lg:hidden">
@@ -43,33 +57,23 @@ const Navbar = () => {
             </div>
             {/* Page content here */}
           </div>
-          <div className="drawer-side min-h-screen z-50">
+          <div className="drawer-side bg-slate- min-h-screen z-50">
             <label
               htmlFor="my-drawer-3"
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu bg-base-200 min-h-full w-80 p-4">
+            <ul className="menu bg-slate-900 min-h-full w-80 p-4">
               {/* Sidebar content here */}
               {links.map((link) => (
-                <li key={link.title}>
-                  <Link href={link.path}>{link.title}</Link>
-                </li>
-              ))}
+            <li key={link.title}>
+              <Link href={link.path}>{link.icon} {link.title}</Link>
+            </li>
+          ))}
             </ul>
           </div>
         </div>
         {/* Drawer end */}
-        <a className=" text-xl ">Md Junayed</a>
-      </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links.map((link) => (
-            <li key={link.title}>
-              <Link href={link.path}>{link.title}</Link>
-            </li>
-          ))}
-        </ul>
       </div>
      
     </div>
