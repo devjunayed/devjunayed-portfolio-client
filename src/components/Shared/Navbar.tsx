@@ -16,13 +16,13 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="navbar fixed z-50 bg-slate-900 shadow-md shadow-gray-600 mb-2">
-      <div className="navbar-start flex mx-10">
+    <div className="navbar px-10  fixed z-50 bg-slate-900 shadow-md shadow-gray-600 mb-2">
+      <div className="navbar-start flex ">
      
         <a href="mailto:mdjunayed601@gmail.com" className=" text-base md:text-xl flex items-center gap-2 justify-center"><MailIcon /> mdjunayed601@gmail.com</a>
       </div>
       <div className="navbar-end ">
-        <ul className="menu menu-horizontal px-1 hidden lg:flex">
+        <ul className="menu menu-horizontal  justify-end hidden lg:flex">
           {links.map((link) => (
             <li key={link.title}>
               <Link href={link.path}>{link.icon} {link.title}</Link>

@@ -8,7 +8,7 @@ import { FacebookIcon, GithubIcon, LinkedinIcon, MessageCircleIcon } from "lucid
 export function Hero() {
   const words = `I am a MERN stack web developer. Ready to Join your team`;
   return (
-    <BackgroundBeamsWithCollision className="min-h-screen">
+    <BackgroundBeamsWithCollision className="min-h-[76vh]">
       {/* <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
         What&apos;s cooler than Beams?{" "}
         <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
@@ -30,7 +30,7 @@ export function Hero() {
         />
 
         <h1 className=" text-xl mt-4">Hi, I am Md Junayed</h1>
-        <TextGenerateEffect className="text-7xl" words={words}  />
+        <TextGenerateEffect className="" words={words}  />
         <div className="flex justify-center mt-4 items-center gap-4 ">
           <span className="border p-2 rounded-full">
             <GithubIcon />
