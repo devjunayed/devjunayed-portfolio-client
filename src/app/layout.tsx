@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import Navbar from "@/components/Shared/Navbar";
-import About from "@/components/Home/About";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +35,6 @@ export default function RootLayout({
           <TracingBeam className="">
             {children}
             </TracingBeam>
-          <About />
         </div>
       </body>
     </html>

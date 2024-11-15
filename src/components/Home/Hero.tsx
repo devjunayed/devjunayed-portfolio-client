@@ -45,6 +45,7 @@ export function Hero() {
             <MessageCircleIcon />
           </span>
         </div>
+        
       </div>
     </BackgroundBeamsWithCollision>
   );
