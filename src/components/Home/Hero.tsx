@@ -3,35 +3,67 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import Image from "next/image";
 import ProfileImg from "@/assets/image.png";
-import { FacebookIcon, GithubIcon, LinkedinIcon, MessageCircleIcon } from "lucide-react";
+import ReactImage from "@/assets/react.png";
+import NextjsImage from "@/assets/nextjs.png";
+import MongodbImage from "@/assets/mongodb.png";
+import ExpressImage from "@/assets/express.webp";
+import NodeImage from "@/assets/nodejs.png";
+import { Download } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
-  const words = `I am a MERN stack web developer. Ready to Join your team`;
+  const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
   return (
-    <BackgroundBeamsWithCollision className="min-h-[76vh]">
-      {/* <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
-        What&apos;s cooler than Beams?{" "}
-        <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
-          <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
-            <span className="">Exploding beams.</span>
-          </div>
-          <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
-            <span className="">Exploding beams.</span>
-          </div>
-        </div>
-      </h2> */}
-      <div className="flex mx-10 flex-col justify-center items-center  py-4">
+    <BackgroundBeamsWithCollision className="min-h-screen relative ">
+      <Image
+        src={ReactImage}
+        className="absolute top-32 left-0 md:left-16 w-12 animate-smooth-bounce"
+        alt="image"
+        height={70}
+        width={70}
+      />
+
+      <Image
+        src={MongodbImage}
+        className="absolute top-0 md:top-8 w-12  bg-white rounded-full animate-smooth-bounce"
+        alt="image"
+        height={70}
+        width={70}
+      />
+      <Image
+        src={NextjsImage}
+        className="absolute top-32 right-0 w-12 md:right-16 bg-white rounded-full animate-smooth-bounce"
+        alt="image"
+        height={70}
+        width={70}
+      />
+      <Image
+        src={ExpressImage}
+        className="absolute bottom-32 w-12 right-48  bg-white rounded-full animate-smooth-bounce"
+        alt="image"
+        height={70}
+        width={70}
+      />
+      <Image
+        src={NodeImage}
+        className="absolute bottom-32 w-12 left-48  bg-none rounded-full animate-smooth-bounce"
+        alt="image"
+        height={70}
+        width={70}
+      />
+
+      <div className="flex z-30   flex-col justify-center items-center  py-4">
         <Image
           src={ProfileImg}
-          className="rounded-full  shadow-inner shadow-white"
+          className="rounded-full  mx-auto  shadow-inner shadow-white"
           alt="image"
           height={200}
           width={200}
         />
 
         <h1 className=" text-xl mt-4">Hi, I am Md Junayed</h1>
-        <TextGenerateEffect className="" words={words}  />
-        <div className="flex justify-center mt-4 items-center gap-4 ">
+        <TextGenerateEffect className="" words={words} />
+        {/* <div className="flex justify-center mt-4 items-center gap-4 ">
           <span className="border p-2 rounded-full">
             <GithubIcon />
           </span>
@@ -44,8 +76,17 @@ export function Hero() {
           <span className="border p-2 rounded-full">
             <MessageCircleIcon />
           </span>
-        </div>
-        
+        </div> */}
+
+        <Link
+          href={
+            "https://drive.google.com/file/d/1wsY96zMFD9yf8yKSugkCK6TFO8F9MOFw/view?usp=sharing"
+          }
+          target="_blank"
+          className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+        >
+          Download Resume <Download className="ml-2" />
+        </Link>
       </div>
     </BackgroundBeamsWithCollision>
   );

@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 const config = {
   // darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -62,6 +62,18 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        },
+        "smooth-bounce": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -72,13 +84,20 @@ const config = {
         },
       },
       animation: {
+         shimmer: "shimmer 2s linear infinite",
+        "smooth-bounce": "smooth-bounce 3.5s ease-in-out infinite",
+
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [addVariablesForColors, require("tailwindcss-animate"), require('daisyui'),],
-} satisfies Config
+  plugins: [
+    addVariablesForColors,
+    require("tailwindcss-animate"),
+    require("daisyui"),
+  ],
+} satisfies Config;
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }: any) {
@@ -86,9 +105,9 @@ function addVariablesForColors({ addBase, theme }: any) {
   const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
 }
-export default config
+export default config;
