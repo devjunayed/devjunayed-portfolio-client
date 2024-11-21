@@ -1,11 +1,27 @@
-import { ReactNode } from "react"
+"use client";
+import Loading from "@/components/Shared/Loading";
+import { SidebarWrapper } from "@/components/ui/sidebar-wrapper";
 
-const layout = ({children}: {children: ReactNode}) => {
+import { useUser } from "@/context/user.provider";
+import { creatorLinks } from "@/utils/creator.links";
+
+
+import React, { ReactNode } from "react";
+
+const DashboardLayout = ({ children }: { children: ReactNode }) => {
+  const { user } = useUser();
+
+  if(!user){
+    return <Loading />
+  }
+
   return (
-    <div>
-      {children}
+    <div className="min-h-screen">
+      <SidebarWrapper links={creatorLinks}>
+        {children}
+      </SidebarWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default DashboardLayout;
