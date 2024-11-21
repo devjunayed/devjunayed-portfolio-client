@@ -10,6 +10,7 @@ import ExpressImage from "@/assets/express.webp";
 import NodeImage from "@/assets/nodejs.png";
 import { Download } from "lucide-react";
 import Link from "next/link";
+import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
 export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
@@ -52,14 +53,20 @@ export function Hero() {
         width={70}
       />
 
-      <div className="flex z-30   flex-col justify-center items-center  py-4">
-        <Image
-          src={ProfileImg}
-          className="rounded-full  mx-auto  shadow-inner shadow-white"
-          alt="image"
-          height={200}
-          width={200}
-        />
+      <div className="flex z-30   flex-col justify-center items-center  ">
+        <CardContainer className="inter-var">
+          <CardBody className="relative group/card    w-auto  h-auto ">
+            <CardItem translateZ="50" className="text-xl font-bold ">
+              <Image
+                src={ProfileImg}
+                className="rounded-full  mx-auto  shadow-inner shadow-white"
+                alt="image"
+                height={200}
+                width={200}
+              />
+            </CardItem>
+          </CardBody>
+        </CardContainer>
 
         <h1 className=" text-xl mt-4">Hi, I am Md Junayed</h1>
         <TextGenerateEffect className="" words={words} />

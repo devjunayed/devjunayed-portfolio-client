@@ -62,6 +62,11 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
         shimmer: {
           from: {
             "backgroundPosition": "0 0"
@@ -84,6 +89,8 @@ const config = {
         },
       },
       animation: {
+        scroll:
+        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
          shimmer: "shimmer 2s linear infinite",
         "smooth-bounce": "smooth-bounce 3.5s ease-in-out infinite",
 

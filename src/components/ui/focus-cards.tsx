@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 
 export const Card = React.memo(
   ({
