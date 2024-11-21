@@ -1,11 +1,13 @@
-import React from 'react'
+import Login from '@/components/Auth/Login'
+import Loading from '@/components/Shared/Loading'
+import React, { Suspense } from 'react'
 
-const login = () => {
+const page = () => {
   return (
-    <div>
-      
-    </div>
+    <Suspense fallback={<Loading />}>
+        <Login />
+    </Suspense>
   )
 }
 
-export default login
+export default page
