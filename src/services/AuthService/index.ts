@@ -24,8 +24,8 @@ export const loginUser = async (userData: any) => {
   try {
     const { data } = await axiosInstance.post("/auth/login", userData);
     if (data?.success) {
-      (await cookies()).set("access-token", data?.data?.accessToken);
-      (await cookies()).set("refresh-token", data?.data?.refreshToken);
+      (await cookies()).set("access-token", data?.token.accessToken);
+      (await cookies()).set("refresh-token", data?.token.refreshToken);
     }
     return data;
   } catch (error: any) {
@@ -41,10 +41,11 @@ export const getCurrentUser = async () => {
     if (accessToken) {
       decodedToken = await jwtDecode(accessToken);
 
-      const { data } = await axiosInstance.get(`/user/${decodedToken?.userId}`);
+      const { data } = await axiosInstance.get(`/user/${decodedToken?.email}`);
+     
 
       return {
-        ...data.data[0],
+        ...data.data,
       };
     }
     return decodedToken;
@@ -62,7 +63,7 @@ export const logOutUser = async () => {
   }
 };
 
-export const setAccessToken =async (accessToken: string) => {
+export const setAccessToken = async (accessToken: string) => {
   (await cookies()).set("access-token", accessToken);
 };
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "./services/AuthService";
 
-const AuthRoutes = ["/login", "/register"];
+const AuthRoutes = ["/login"];
 const roleBasedRoutes = {
     creator: [/^\/creator/]
 }
@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
     const {pathname} = request.nextUrl;
 
     const user = await getCurrentUser();
+    console.log(user)
     if(!user){
         if(AuthRoutes.includes(pathname)){
             return NextResponse.next();
@@ -34,5 +35,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: [ "/creator",  "/login", "/register"]
+    matcher: [ "/creator",  "/login"]
 }
