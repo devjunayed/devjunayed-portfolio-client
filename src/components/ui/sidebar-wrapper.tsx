@@ -18,7 +18,7 @@ export function SidebarWrapper({
   return (
     <div
       className={cn(
-        "rounded-md bg flex flex-col md:flex-row w-full   flex-1 mx-auto  overflow-hidden ",
+        "rounded-md bg flex flex-col md:flex-row w-full   flex-1   overflow-hidden ",
         "h-screen"
       )}
     >
@@ -69,5 +69,5 @@ const SidebarLinkWithNested = ({ link }: { link: any }) => {
 };
 
 export const Dashboard = ({ children }: { children: ReactNode }) => {
-  return <div className="  m-6 rounded-lg flex justify-center w-full shadow-xl">{children}</div>;
+  return <div className="  m-6 rounded-lg mx-10 w-full shadow-xl">{children}</div>;
 };
