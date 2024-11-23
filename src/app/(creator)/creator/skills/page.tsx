@@ -14,7 +14,7 @@ const Page = () => {
     skillName: "",
     description: "",
     icon: "",
-    category: "",
+    categoryName: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -23,7 +23,7 @@ const Page = () => {
   };
 
   const handleCategoryChange = (category: string) => {
-    setFormData((prevData) => ({ ...prevData, category }));
+    setFormData((prevData) => ({ ...prevData, categoryName: category }));
   };
 
   const resetForm = () => {
@@ -31,7 +31,7 @@ const Page = () => {
       skillName: "",
       description: "",
       icon: "",
-      category: "",
+      categoryName: "",
     });
   };
 
@@ -90,7 +90,7 @@ const Page = () => {
                         id={category.toLowerCase()}
                         name="category"
                         type="radio"
-                        checked={formData.category === category}
+                        checked={formData.categoryName === category}
                         onChange={() => handleCategoryChange(category)}
                       />
                       <label htmlFor={category.toLowerCase()}>{category.toUpperCase()}</label>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 "use client";
 import { cn } from "@/utils/utils";
 import { AnimatePresence, motion } from "framer-motion";
