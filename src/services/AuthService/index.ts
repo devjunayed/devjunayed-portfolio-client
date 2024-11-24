@@ -38,14 +38,17 @@ export const getCurrentUser = async () => {
     const accessToken = (await cookies()).get("access-token")?.value;
     let decodedToken = null;
 
+
+
     if (accessToken) {
       decodedToken = await jwtDecode(accessToken);
 
       const { data } = await axiosInstance.get(`/user/${decodedToken?.email}`);
      
 
+      
       return {
-        ...data.data,
+        ...data?.data,
       };
     }
     return decodedToken;
@@ -69,14 +72,17 @@ export const setAccessToken = async (accessToken: string) => {
 
 export const getNewAccessToken = async () => {
   try {
-    const refreshToken = (await cookies()).get("refresh-token")?.value;
+    const cookieStore = await cookies();
+    const refreshToken = cookieStore.get("refresh-token")?.value;
+
+   
 
     const res = await axiosInstance({
       url: "/auth/refresh-token",
       method: "POST",
       withCredentials: true,
       headers: {
-        cookie: `refreshToken=${refreshToken}`,
+        cookie: refreshToken,
       },
     });
 
