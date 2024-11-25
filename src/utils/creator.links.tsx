@@ -1,13 +1,9 @@
 import {
   IconBrandTabler,
-  IconPhotoScan,
   IconSettings,
 } from "@tabler/icons-react";
 import {  FileTextIcon, Folder, Star } from "lucide-react";
 
-import { BiPhotoAlbum } from "react-icons/bi";
-
-import { MdPhotoLibrary } from "react-icons/md";
 
 export const creatorLinks = [
   {
