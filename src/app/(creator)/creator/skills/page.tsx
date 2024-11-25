@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalBody,
@@ -8,16 +8,25 @@ import {
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 import { Plus } from "lucide-react";
+import { useCreateSkill } from "@/hooks/skill.hook";
+import { backendIcons, frontendIcons, toolsIcons } from "@/utils/skills.icon";
 
 const Page = () => {
   const [formData, setFormData] = useState({
     skillName: "",
     description: "",
     icon: "",
-    categoryName: "",
+    categoryName: "frontend",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const [skillIcons, setSkillIcons] = useState(frontendIcons);
+
+  const { mutate: handleCreateSkill } = useCreateSkill();
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -35,10 +44,20 @@ const Page = () => {
     });
   };
 
+  useEffect(() => {
+    if (formData.categoryName === "frontend") {
+      setSkillIcons(frontendIcons);
+    } else if (formData.categoryName === "backend") {
+      setSkillIcons(backendIcons);
+    } else if(formData.categoryName === 'tools') {
+      setSkillIcons(toolsIcons);
+    }
+  }, [formData.categoryName]);
+
   const handleSubmit = () => {
     console.log("Form Data:", formData);
-    resetForm(); // Reset the form after submission
-    // Add your API call or data submission logic here
+    handleCreateSkill(formData);
+    resetForm();
   };
 
   return (
@@ -70,20 +89,8 @@ const Page = () => {
                   rows={6}
                   placeholder="e.g. React is a JavaScript Library..."
                 ></textarea>
-                {/* Icon */}
-                <select
-                  name="icon"
-                  value={formData.icon}
-                  onChange={handleInputChange}
-                  className="select"
-                  title="Choose icon"
-                >
-                  <option hidden>Select Icon</option>
-                  <option value="tailwindcss">TailwindCSS</option>
-                  <option value="nextjs">Next.js</option>
-                </select>
                 {/* Category */}
-                <div className="flex justify-between">
+                <div className="flex justify-between my-4 mx-2">
                   {["frontend", "backend", "tools"].map((category) => (
                     <div key={category} className="flex gap-2">
                       <input
@@ -93,15 +100,30 @@ const Page = () => {
                         checked={formData.categoryName === category}
                         onChange={() => handleCategoryChange(category)}
                       />
-                      <label htmlFor={category.toLowerCase()}>{category.toUpperCase()}</label>
+                      <label htmlFor={category.toLowerCase()}>
+                        {category.toUpperCase()}
+                      </label>
                     </div>
                   ))}
                 </div>
+                {/* Icon */}
+                <select
+                  name="icon"
+                  value={formData.icon}
+                  onChange={handleInputChange}
+                  className="select"
+                  title="Choose icon"
+                >
+                  <option hidden>Select Icon</option>
+                  {skillIcons.map((icon, index) => (
+                    <option className="capitalize" key={index} value={icon}>
+                      {icon}
+                    </option>
+                  ))}
+                </select>
               </div>
             </ModalContent>
             <ModalFooter className="bg-slate-900 px-10">
-            
-             
               {/* Submit Button */}
               <button
                 className="btn bg-slate-900 py-1  border border-white rounded-lg w-28"
