@@ -1,57 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalTrigger } from "../ui/animated-modal";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalTrigger,
+} from "../../ui/animated-modal";
 import { Plus } from "lucide-react";
 import { useCreateSkill } from "@/hooks/skill.hook";
 import { backendIcons, frontendIcons, toolsIcons } from "@/utils/skills.icon";
 
 const AddSkills = () => {
-    const [formData, setFormData] = useState({
-        skillName: "",
-        description: "",
-        icon: "",
-        categoryName: "frontend",
-      });
-    
-      const [skillIcons, setSkillIcons] = useState(frontendIcons);
-    
-      const { mutate: handleCreateSkill } = useCreateSkill();
-      const handleInputChange = (
-        e: React.ChangeEvent<
-          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
-      ) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-      };
-    
-      const handleCategoryChange = (category: string) => {
-        setFormData((prevData) => ({ ...prevData, categoryName: category }));
-      };
-    
-      const resetForm = () => {
-        setFormData({
-          skillName: "",
-          description: "",
-          icon: "",
-          categoryName: "",
-        });
-      };
-    
-      useEffect(() => {
-        if (formData.categoryName === "frontend") {
-          setSkillIcons(frontendIcons);
-        } else if (formData.categoryName === "backend") {
-          setSkillIcons(backendIcons);
-        } else if(formData.categoryName === 'tools') {
-          setSkillIcons(toolsIcons);
-        }
-      }, [formData.categoryName]);
-    
-      const handleSubmit = () => {
-        console.log("Form Data:", formData);
-        handleCreateSkill(formData);
-        resetForm();
-      };
+  const [formData, setFormData] = useState({
+    skillName: "",
+    description: "",
+    icon: "",
+    categoryName: "frontend",
+  });
+
+  const [skillIcons, setSkillIcons] = useState(frontendIcons);
+
+  const { mutate: handleCreateSkill } = useCreateSkill();
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setFormData((prevData) => ({ ...prevData, categoryName: category }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      skillName: "",
+      description: "",
+      icon: "",
+      categoryName: "",
+    });
+  };
+
+  useEffect(() => {
+    if (formData.categoryName === "frontend") {
+      setSkillIcons(frontendIcons);
+    } else if (formData.categoryName === "backend") {
+      setSkillIcons(backendIcons);
+    } else if (formData.categoryName === "tools") {
+      setSkillIcons(toolsIcons);
+    }
+  }, [formData.categoryName]);
+
+  const handleSubmit = () => {
+    console.log("Form Data:", formData);
+    handleCreateSkill(formData);
+    resetForm();
+  };
   return (
     <>
       {/* Add Skill Modal */}
