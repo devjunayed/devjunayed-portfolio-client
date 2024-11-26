@@ -16,7 +16,7 @@ const Page = () => {
           {skillData &&
             skillData.map((category) => (
               <div key={category._id}>
-                <h3 className="capitalize text-xl border-b border-white pb-2">
+                <h3 className="capitalize text-white text-xl border-b border-white pb-2">
                   {category.categoryName}
                 </h3>
                 <div className="flex mt-2">

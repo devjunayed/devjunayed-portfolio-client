@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="max-h-screen">
       <SidebarWrapper links={creatorLinks}>
         {children}
       </SidebarWrapper>

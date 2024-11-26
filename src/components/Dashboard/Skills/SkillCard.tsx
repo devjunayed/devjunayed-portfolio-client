@@ -27,7 +27,7 @@ const SkillCard = ({ skill }: { skill: TSkill }) => {
                 src={`https://skillicons.dev/icons?i=${skill.icon}`}
               />
               <h3 className="text-xl text-white">{skill.skillName}</h3>
-              <p>{skill.description}</p>
+              <p className="text-white">{skill.description}</p>
             </div>
             <div className="divider"></div>
             <div className="flex justify-between">
