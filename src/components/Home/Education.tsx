@@ -2,7 +2,7 @@ import Heading from "../Shared/Heading";
 
 const Education = () => {
   return (
-    <div>
+    <div className="mx-6">
       <Heading title="Education" />
       <div className="my-6 lg:my-10 text-white">
         <h3 className="text-xl text-white">Sonargaon University</h3>
@@ -12,7 +12,7 @@ const Education = () => {
         </h6>
         <h6>2019 - 2023 </h6>
         </span>
-        <p className="mt-4">I have completed BSC in CSE at 2023 with 166 credit and got overall cgpa 3.33. During the education time i have made several projects induvidually and with team. Among them CMS (Content Management System) with java swing and Bachelor Buddy (Mess Management System) are best and i have lead this project. During the University i have learned a lot of technology and then i have sharpen them by doing Complete Web Development Course on Programming Hero. </p>
+        <p className="mt-4 text-justify">I have completed BSC in CSE at 2023 with 166 credit and got overall cgpa 3.33. During the education time i have made several projects induvidually and with team. Among them CMS (Content Management System) with java swing and Bachelor Buddy (Mess Management System) are best and i have lead this project. During the University i have learned a lot of technology and then i have sharpen them by doing Complete Web Development Course on Programming Hero. </p>
       </div>
     </div>
   );

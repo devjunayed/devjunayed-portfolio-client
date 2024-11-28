@@ -3,7 +3,7 @@ import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 
 const Skills = () => {
   return (
-    <div className="">
+    <div className="mx-6">
       <Heading title="skills" />
       <div className="h-[40rem] rounded-md flex flex-col antialiased k dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards

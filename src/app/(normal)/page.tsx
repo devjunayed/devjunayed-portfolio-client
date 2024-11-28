@@ -5,7 +5,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-slate-900 mt-20 mx-6 lg:mx-10">
+    <div className="bg-slate-900 mt-20 ">
       <Hero />
       <Education />
       <Skills />
