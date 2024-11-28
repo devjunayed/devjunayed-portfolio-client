@@ -68,22 +68,9 @@ export function Hero() {
           </CardBody>
         </CardContainer>
 
-        <h1 className=" text-xl mt-4">Hi, I am Md Junayed</h1>
-        <TextGenerateEffect className="" words={words} />
-        {/* <div className="flex justify-center mt-4 items-center gap-4 ">
-          <span className="border p-2 rounded-full">
-            <GithubIcon />
-          </span>
-          <span className="border p-2 rounded-full">
-            <LinkedinIcon />
-          </span>
-          <span className="border p-2 rounded-full">
-            <FacebookIcon />
-          </span>
-          <span className="border p-2 rounded-full">
-            <MessageCircleIcon />
-          </span>
-        </div> */}
+        <h1 className="text-white text-xl mt-4">Hi, I am Md Junayed</h1>
+        <TextGenerateEffect className="text-white" words={words} />
+       
 
         <Link
           href={

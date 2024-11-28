@@ -20,3 +20,9 @@ export type TSkillData = {
    TSkill
   ];
 };
+
+export type TBlogData = {
+  _id: string;
+  title: string;
+  description: string;
+}

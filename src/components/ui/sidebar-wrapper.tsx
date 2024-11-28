@@ -69,5 +69,5 @@ const SidebarLinkWithNested = ({ link }: { link: any }) => {
 };
 
 export const Dashboard = ({ children }: { children: ReactNode }) => {
-  return <div className="  m-6 rounded-lg mx-10 w-full shadow-xl">{children}</div>;
+  return <div className=" p-10  rounded-lg  md:mx-10 w-full shadow-xl">{children}</div>;
 };

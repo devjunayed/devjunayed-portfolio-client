@@ -1,36 +1,48 @@
-import { HomeIcon, InfoIcon, MailIcon, } from "lucide-react";
+import { HomeIcon, InfoIcon, MailIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { IoMdDocument } from "react-icons/io";
 
 const Navbar = () => {
   const links = [
     {
       title: "Home",
       path: "/",
-      icon: <HomeIcon />
+      icon: <HomeIcon size={24} />,
+    },
+    {
+      title: "Blogs",
+      path: "/blogs",
+      icon: <IoMdDocument size={24} />,
     },
     {
       title: "About",
       path: "#about",
-      icon: <InfoIcon />
+      icon: <InfoIcon size={24} />,
     },
   ];
   return (
     <div className="navbar px-10  fixed z-50 bg-slate-900 shadow-md shadow-gray-600 mb-2">
       <div className="navbar-start flex ">
-     
-        <a href="mailto:mdjunayed601@gmail.com" className=" text-base  flex items-center gap-2 justify-center"><MailIcon /> mdjunayed601@gmail.com</a>
+        <a
+          href="mailto:mdjunayed601@gmail.com"
+          className=" text-base  flex items-center gap-2 justify-center text-white"
+        >
+          <MailIcon /> mdjunayed601@gmail.com
+        </a>
       </div>
       <div className="navbar-end ">
         <ul className="menu menu-horizontal  justify-end hidden lg:flex">
           {links.map((link) => (
             <li key={link.title}>
-              <Link href={link.path}>{link.icon} {link.title}</Link>
+              <Link href={link.path} className="flex items-center justify-center text-white">
+                {link.icon} {link.title}
+              </Link>
             </li>
           ))}
         </ul>
-           {/* Drawer start */}
-           <div className="drawer drawer-end w-7 ">
+        {/* Drawer start */}
+        <div className="drawer drawer-end w-7 ">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle " />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
@@ -66,16 +78,17 @@ const Navbar = () => {
             <ul className="menu bg-slate-900 min-h-full w-80 p-4">
               {/* Sidebar content here */}
               {links.map((link) => (
-            <li key={link.title}>
-              <Link href={link.path}>{link.icon} {link.title}</Link>
-            </li>
-          ))}
+                <li key={link.title}>
+                  <Link href={link.path}>
+                    {link.icon} {link.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         {/* Drawer end */}
       </div>
-     
     </div>
   );
 };

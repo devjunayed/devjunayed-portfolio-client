@@ -105,7 +105,7 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5  -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <h3 className="text-center font-bold text-lg">{item.title}</h3>
+              <h3 className="text-center text-white font-bold text-lg">{item.title}</h3>
               <span className=" text-center relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
                 <p className="text-center">
                 &#34;{item.quote}&#34;
