@@ -91,7 +91,7 @@ const Navbar = () => {
                 {/* Sidebar content here */}
                 {links.map((link) => (
                   <li key={link.title}>
-                    <Link href={link.path}>
+                    <Link className="text-white" href={link.path}>
                       {link.icon} {link.title}
                     </Link>
                   </li>

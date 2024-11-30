@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    scrollbar-width: none;
+.infinite-scroll-component {
+    overflow: hidden !important;
 }

@@ -1,15 +1,61 @@
-import envConfig from '@/config/envConfig'
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
 
-const Page = async () => {
-    const response = await fetch(`${envConfig.baseApi}/blog` );
-    const BlogData = await response.json();
-    console.log(BlogData)
+import BlogCard from "@/components/Blog/BlogCard";
+import envConfig from "@/config/envConfig";
+import { TBlogData } from "@/types";
+import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { CircleLoader } from "react-spinners";
+
+const Page = () => {
+  const [blogData, setBlogData] = useState<TBlogData[]>([]);
+  const [blogCount, setBlogCount] = useState<number>(0);
+  const [page, setPage] = useState(1);
+
+  const fetchData = async () => {
+    try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch(`${envConfig.baseApi}/blog?page=${page}&limit=5`, {
+        cache: "no-store",
+      });
+      const data = await response.json();
+
+      // Append new blogs to the existing ones
+      setBlogData((prev) => [...prev, ...data.data]);
+      setBlogCount(data.totalDocument);
+
+      // Increment page for the next fetch
+      setPage((prev) => prev + 1);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <div className='text-white  mt-20 min-h-screen'>
-      blog Page
+    <div className="text-white mx-4 mt-20 min-h-screen overflow-y-hidden pb-10">
+      <InfiniteScroll
+        dataLength={blogData.length} 
+        next={fetchData}
+        hasMore={blogData.length < blogCount} 
+        loader={<div className="flex justify-center text-white"><CircleLoader color="white" /></div>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {blogData.map((blog) => (
+          <BlogCard key={blog._id}  blog={blog} />
+        ))}
+      </InfiniteScroll>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
+ 

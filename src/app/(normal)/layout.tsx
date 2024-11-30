@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 import Navbar from "@/components/Shared/Navbar";
 
 
@@ -18,9 +17,8 @@ export default function RootLayout({
     
         <div className=" overflow-y-hidden">
           <Navbar />
-          <TracingBeam className="">
+         
             {children}
-            </TracingBeam>
         </div>
       
   );
