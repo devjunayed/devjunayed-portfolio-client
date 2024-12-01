@@ -61,7 +61,7 @@ const AddSkills = () => {
   return (
     <>
       {/* Add Skill Modal */}
-      <div className="flex justify-end">
+      <div className="flex justify-end text-white">
         <Modal>
           <ModalTrigger className="btn rounded-md bg-transparent border border-white">
             <Plus /> Add Skills

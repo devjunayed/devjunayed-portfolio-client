@@ -6,11 +6,15 @@ import React from "react";
 
 const Page = () => {
   const { data: skillData } = useGetAllSkill();
-  console.log(skillData);
   return (
     <>
       <AddSkills />
       <div>
+        {skillData?.length === 0 && (
+          <div className="h-[70vh] flex items-center justify-center text-2xl text-white">
+            No skill yet 🤣
+          </div>
+        )}
         {/* Skill Categories */}
         <div className="space-y-4">
           {skillData &&

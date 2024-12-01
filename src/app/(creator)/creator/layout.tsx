@@ -6,16 +6,22 @@ import { useUser } from "@/context/user.provider";
 import { creatorLinks } from "@/utils/creator.links";
 
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { user } = useUser();
+  const [currentUser, setCurrentUser] = useState({});
 
-  if(!user){
+  useEffect(() => {
+    if(user){
+      setCurrentUser(user);
+    }
+  }, [user])
+
+  if(!currentUser){
     return <Loading />
   }  
 
-  console.log(user)
 
   return (
     <div className="max-h-screen">
