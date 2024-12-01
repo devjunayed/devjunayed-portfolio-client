@@ -13,7 +13,9 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
   if(!user){
     return <Loading />
-  }
+  }  
+
+  console.log(user)
 
   return (
     <div className="max-h-screen">

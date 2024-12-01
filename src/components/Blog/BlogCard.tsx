@@ -23,7 +23,7 @@ const BlogCard = ({ blog }: { blog: TBlogData }) => {
         </div>
         <div className="flex flex-col justify-center h-full">
           <h3 className="text-xl mb-2">{blog.title}</h3>
-          <p className="">{blog.shortDescription}...</p>
+          <p className="">{blog.shortDescription.slice(0, 120)}...</p>
 
           <div className="flex justify-center items-center ">
             <Link

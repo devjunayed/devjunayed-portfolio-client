@@ -4,3 +4,4 @@ declare module "tailwindcss/lib/util/flattenColorPalette" {
   }
 
 declare module "react-infinite-scroller"
+declare module 'react-code-blocks'
