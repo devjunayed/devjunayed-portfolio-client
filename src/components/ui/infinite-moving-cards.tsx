@@ -13,9 +13,9 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    image: string;
-    quote: string;
-    title: string;
+    icon: string;
+    description: string;
+    skillName: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -24,6 +24,8 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+
+  console.log(items);
 
   useEffect(() => {
     addAnimation();
@@ -88,27 +90,27 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <li
             className="w-[250px] lg:w-[310px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-2 py-2 md:w-[400px]"
             style={{
               background:
                 "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
             }}
-            key={item.title}
+            key={item.skillName}
           >
             <div className="text-center mb-2 flex justify-center">
-              <img src={item.image} alt={item.title} />
+              <img src={`https://skillicons.dev/icons?i=${item.icon}`} alt={item.skillName} />
             </div>
             <blockquote>
               <div
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5  -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <h3 className="text-center text-white font-bold text-lg">{item.title}</h3>
+              <h3 className="text-center text-white font-bold text-lg">{item.skillName}</h3>
               <span className=" text-center relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
                 <p className="text-center  overflow-y-scroll">
-                &#34;{item.quote}&#34;
+                &#34;{item.description}&#34;
                   </p>
               </span>
               
