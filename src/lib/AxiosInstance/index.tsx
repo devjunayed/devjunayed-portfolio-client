@@ -28,6 +28,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async function (error) {
+
+    console.log(error)
+
     const config = error.config;
 
     if (
@@ -36,7 +39,7 @@ axiosInstance.interceptors.response.use(
     ) {
       config.sent = true;
       const res = await getNewAccessToken();
-      const accessToken = res.data.accessToken;
+      const accessToken = res.data;
 
       config.headers["Authorization"] = accessToken;
       setAccessToken(accessToken);
