@@ -1,8 +1,10 @@
+"use client";
+import AddProjects from "@/components/Dashboard/Projects/AddProjects"
 
 const page = () => {
   return (
-    <div>
-      Projects
+    <div className="text-white">
+      <AddProjects />
     </div>
   )
 }
