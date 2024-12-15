@@ -5,3 +5,8 @@
 .infinite-scroll-component {
     overflow: hidden !important;
 }
+
+.revert-tailwind {
+    all: unset !important;
+    /* font-size: initial !important; */
+}
