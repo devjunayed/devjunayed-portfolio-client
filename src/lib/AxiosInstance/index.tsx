@@ -19,6 +19,7 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   function (error) {
+    console.log('hitting')
     return Promise.reject(error);
   }
 );
@@ -29,16 +30,19 @@ axiosInstance.interceptors.response.use(
   },
   async function (error) {
 
-    console.log(error)
+    console.log(error.message)
+    console.log("Hitting from response")
 
     const config = error.config;
 
     if (
-      (error?.response.status === 401 && !config?.sent) ||
-      error.response.data.message === "jwt expired"
+      (error?.response.status === 401  && !config?.sent) ||
+      error.response.data.message === "jwt expired" 
     ) {
       config.sent = true;
       const res = await getNewAccessToken();
+      console.log('hitting inside')
+      
       const accessToken = res.data;
 
       config.headers["Authorization"] = accessToken;
@@ -46,6 +50,8 @@ axiosInstance.interceptors.response.use(
 
       return axiosInstance(config);
     } else {
+      (await cookies()).delete("access-token");
+      (await cookies()).delete("refresh-token");
       return Promise.reject(error);
     }
   }
