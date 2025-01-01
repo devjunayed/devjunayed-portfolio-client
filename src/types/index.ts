@@ -28,3 +28,17 @@ export type TBlogData = {
   shortDescription: string;
   description: string;
 }
+
+// types.ts
+export interface TProjectData {
+  projectTitle: string;
+  projectThumbnail: string;
+  projectClientViewLink: string;
+  projectServerViewLink: string;
+  projectClientCodeLink: string;
+  projectServerCodeLink: string;
+  projectDescription: string;
+  projectShortDescription: string;
+  projectTags: string;
+  projectTechnologies: string;
+}

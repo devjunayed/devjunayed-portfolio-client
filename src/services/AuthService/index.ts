@@ -88,6 +88,10 @@ export const getNewAccessToken = async () => {
 
     return res.data;
   } catch (error: any) {
+
+    (await cookies()).delete("access-token");
+    (await cookies()).delete("refresh-token");
+
     ThrowError(error);
   }
 };
