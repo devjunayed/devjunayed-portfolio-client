@@ -40,5 +40,6 @@ export interface TProjectData {
   projectDescription: string;
   projectShortDescription: string;
   projectTags: string;
+  isFeatured: boolean;
   projectTechnologies: string;
 }
