@@ -1,9 +1,9 @@
 import Education from "@/components/Home/Education";
 import { Hero } from "@/components/Home/Hero";
-import { Projects } from "@/components/Home/Projects/Projects";
 import Skills from "@/components/Home/Skills";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import React from "react";
+import { Projects } from "./projects/components/Projects";
 
 const page = () => {
   return (
