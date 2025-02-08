@@ -22,7 +22,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
 
           {/* Buttons - Stick to Bottom */}
           <div className="mt-auto flex-grow flex gap-1 md:gap-4 justify-center items-center pt-4">
-            <LinkButton icon={<Eye />} href="" btnText="Preview" />
+            <LinkButton icon={<Eye />} href={`/projects/${project._id}`} btnText="Preview" />
             <LinkButton icon={<Info />} href="" btnText="Details" />
           </div>
         </div>

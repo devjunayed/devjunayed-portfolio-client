@@ -31,6 +31,7 @@ export type TBlogData = {
 
 // types.ts
 export interface TProjectData {
+  _id?: string;
   projectTitle: string;
   projectThumbnail: string;
   projectClientViewLink: string;
