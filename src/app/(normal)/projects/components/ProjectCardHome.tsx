@@ -6,6 +6,7 @@ import { Eye, Info } from "lucide-react";
 import LinkButton from "@/components/ui/LinkButton/LinkButton";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
+  console.log(project);
   return (
     <WobbleCard containerClassName="border border-white bg-transparent w-full">
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-6 w-full h-full">
@@ -21,9 +22,17 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
           </div>
 
           {/* Buttons - Stick to Bottom */}
-          <div className="mt-auto flex-grow flex gap-1 md:gap-4 justify-center items-center pt-4">
-            <LinkButton icon={<Eye />} href={`/projects/${project._id}`} btnText="Preview" />
-            <LinkButton icon={<Info />} href="" btnText="Details" />
+          <div className="mt-auto cursor-pointer flex-grow flex gap-1 md:gap-4 justify-center items-center pt-4">
+            <LinkButton
+              icon={<Eye />}
+              href={project.projectClientViewLink}
+              btnText="Preview"
+            />
+            <LinkButton
+              icon={<Info />}
+              href={`/projects/${project._id}`}
+              btnText="Details"
+            />
           </div>
         </div>
 
