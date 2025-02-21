@@ -2,49 +2,49 @@ import React from "react";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { TProjectData } from "@/types";
 import Image from "next/image";
-import { Eye, Info } from "lucide-react";
-import LinkButton from "@/components/ui/LinkButton/LinkButton";
+import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
+import { IconEye } from "@tabler/icons-react";
+import { InfoIcon } from "lucide-react";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
-  console.log(project);
   return (
-    <WobbleCard containerClassName="border border-white bg-transparent w-full">
-      <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-6 w-full h-full">
+    <WobbleCard containerClassName="border border-white bg-transparent w-full h-full flex flex-col">
+      {/* Flex container for content */}
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-6 w-full h-full flex-grow relative">
         {/* Text Section */}
-        <div className="w-full flex items-center flex-col justify-between h-full md:w-1/2">
-          <div className="flex-grow">
-            <h2 className="text-left text-balance text-lg md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-              {project.projectTitle}
-            </h2>
-            <p className="mt-4 text-left text-sm md:text-base lg:text-lg text-neutral-200 ">
-              {project.projectDescription}
-            </p>
-          </div>
+        <div className="w-full flex flex-col h-[400px] md:w-1/2 flex-grow">
+          {/* Title */}
+          <h2 className="text-left text-lg md:text-xl lg:text-xl font-semibold tracking-[-0.015em] text-white">
+            {project.projectTitle}
+          </h2>
 
-          {/* Buttons - Stick to Bottom */}
-          <div className="mt-auto cursor-pointer flex-grow flex gap-1 md:gap-4 justify-center items-center pt-4">
-            <LinkButton
-              icon={<Eye />}
+          {/* Description */}
+          <p className="mt-4 flex-grow flex   text-left text-sm md:text-base lg:text-lg text-neutral-200">
+            {project.projectDescription}
+          </p>
+          {/* Buttons at the bottom-left of the card */}
+
+          <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">
+            <UiVerseButton
+              icon={<IconEye />}
               href={project.projectClientViewLink}
-              btnText="Preview"
+              text="Preview"
             />
-            <LinkButton
-              icon={<Info />}
+            <UiVerseButton
+              icon={<InfoIcon />}
               href={`/projects/${project._id}`}
-              btnText="Details"
+              text="Details"
             />
           </div>
         </div>
 
         {/* Image Section */}
-        <div className="w-full md:w-1/2 relative">
+        <div className="w-full md:w-1/2 relative h-[400px]">
           <Image
             src={project.projectThumbnail}
-            layout="responsive"
-            width={800} // Original image width
-            height={600} // Original image height
+            fill
             alt="Project image"
-            className="w-full h-auto object-cover rounded-2xl"
+            className="w-full  object-cover rounded-2xl"
           />
         </div>
       </div>

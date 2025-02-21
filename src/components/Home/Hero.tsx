@@ -9,8 +9,8 @@ import MongodbImage from "@/assets/mongodb.png";
 import ExpressImage from "@/assets/express.webp";
 import NodeImage from "@/assets/nodejs.png";
 import { Download } from "lucide-react";
-import Link from "next/link";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
+import UiVerseButton from "../ui/LinkButton/UiVerseButton";
 
 export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
@@ -70,17 +70,23 @@ export function Hero() {
 
         <h1 className="text-white text-xl mt-4">Hi, I am Md Junayed</h1>
         <TextGenerateEffect className="text-white" words={words} />
-       
 
-        <Link
+        {/* <Link
           href={
             "https://drive.google.com/file/d/1wsY96zMFD9yf8yKSugkCK6TFO8F9MOFw/view?usp=sharing"
           }
           target="_blank"
           className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
         >
-          Download Resume <Download className="ml-2" />
-        </Link>
+          Download Resume
+        </Link> */}
+        <UiVerseButton
+          href={
+            "https://drive.google.com/file/d/1wsY96zMFD9yf8yKSugkCK6TFO8F9MOFw/view?usp=sharing"
+          }
+          text="Download Resume"
+          icon={<Download  />}
+        />
       </div>
     </BackgroundBeamsWithCollision>
   );

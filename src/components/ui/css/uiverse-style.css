@@ -1,0 +1,83 @@
+.uiverse-button {
+    position: relative;
+    width: fit-content;
+    height: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #CBD5E1;
+    background-color: transparent;
+    overflow: hidden;
+    padding: 0 1rem;
+    text-decoration: none;
+}
+
+.uiverse-button,
+.uiverse-button__icon,
+.uiverse-button__text {
+    transition: all 0.4s ease-in-out;
+}
+
+.uiverse-button .uiverse-button__text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    margin-right: 2rem; /* Ensures space for icon */
+}
+
+.uiverse-button .uiverse-button__icon {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 2.5rem; /* Ensures visibility */
+    display: flex;
+    background-color: #CBD5E1;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.4s ease-in-out, width 0.4s ease-in-out;
+}
+
+/* Hover Effect */
+.uiverse-button:hover {
+    background: transparent;
+}
+
+.uiverse-button:hover .uiverse-button__text {
+    color: transparent;
+}
+
+.uiverse-button:hover .uiverse-button__icon {
+    right: 0;
+    width: 100%;
+}
+
+/* Active State */
+.uiverse-button:active .uiverse-button__icon {
+    background-color: #146c54;
+}
+
+.uiverse-button:active {
+    border: 1px solid #146c54;
+}
+
+/* Mobile Fix: Show Icon Always */
+@media (max-width: 480px) {
+    .uiverse-button {
+        padding: 0 0.75rem;
+    }
+
+    .uiverse-button .uiverse-button__text {
+        font-size: 0.875rem;
+        margin-right: 1.5rem;
+    }
+
+    .uiverse-button .uiverse-button__icon {
+        right: 0;
+        width: 2rem;
+    }
+
+    .uiverse-button:hover .uiverse-button__text {
+        color: #CBD5E1;
+    }
+}

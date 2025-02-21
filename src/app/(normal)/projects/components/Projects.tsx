@@ -4,7 +4,7 @@ import {   MoveRight } from "lucide-react";
 import { useGetAllProjects } from "@/hooks/project.hook";
 import ProjectCardHome from "./ProjectCardHome";
 import Heading from "@/components/Shared/Heading";
-import LinkButton from "@/components/ui/LinkButton/LinkButton";
+import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 
 export function Projects() {
   const { data: projectData } = useGetAllProjects();
@@ -20,7 +20,7 @@ export function Projects() {
           })}
         </div>
         <div className="flex items-center justify-center mt-6">
-          <LinkButton btnText="See More" icon={<MoveRight />} href="/projects" />
+          <UiVerseButton text="See More" icon={<MoveRight />} href="/projects" />
         </div>
       </div>
     </div>
