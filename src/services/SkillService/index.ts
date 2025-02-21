@@ -1,4 +1,5 @@
-"use server"
+"use server";
+
 import axiosInstance from "@/lib/AxiosInstance";
 import { ThrowError } from "@/utils/error"
 

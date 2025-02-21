@@ -1,7 +1,8 @@
-"use server"
+"use server";
+
 import envConfig from "@/config/envConfig";
 import axiosInstance from "@/lib/AxiosInstance";
-import { ThrowError } from "@/utils/error"
+import { ThrowError } from "@/utils/error";
 
 export const createNewBlog= async(blogData: unknown) => {
     try {
