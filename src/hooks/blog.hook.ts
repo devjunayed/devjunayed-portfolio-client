@@ -31,6 +31,6 @@ export const useGetAllBlog = () => {
 export const useGetSingleBlog = () => {
   return useQuery<unknown, Error, string>({
     queryKey: ["GET_SINGLE_BLOG"],
-    queryFn: async (blogId) => await getSingleBlog(blogId),
+    queryFn: async (blogId: string) => await getSingleBlog(blogId),
   });
 };
