@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { ReactNode, useState } from "react";
-import {} from "@tabler/icons-react";
 import { cn } from "@/utils/utils";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
 import { TLinkItem } from "@/types";
