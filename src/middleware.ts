@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { jwtDecode } from "jwt-decode";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "./services/AuthService";
 
 const AuthRoutes = ["/login"];
 const roleBasedRoutes = {
@@ -11,10 +13,11 @@ type Role = keyof typeof roleBasedRoutes;
 export async function middleware(request: NextRequest) {
     const {pathname} = request.nextUrl;
 
+    const accessToken = cookies()?.get("access-token")?.value;
+
+
     
-    const user = await getCurrentUser();
-    console.log(user);
-    if(!user){
+    if(!accessToken){
         if(AuthRoutes.includes(pathname)){
             return NextResponse.next();
         }else{
@@ -24,8 +27,10 @@ export async function middleware(request: NextRequest) {
         }
     }
 
-    if(user?.role && roleBasedRoutes[user?.role as Role]){
-        const routes = roleBasedRoutes[user?.role as Role];
+    const decode = jwtDecode(accessToken) as any;
+
+    if(decode?.role && roleBasedRoutes[decode?.role as Role]){
+        const routes = roleBasedRoutes[decode?.role as Role];
 
         if(routes.some((route) => pathname.match(route))){
             return NextResponse.next();
@@ -36,5 +41,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: [ "/creator",  "/login"]
+    matcher: [ "/creator/:page*",  "/login"]
 }
