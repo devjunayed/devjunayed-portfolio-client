@@ -23,7 +23,8 @@ export const getAllBlog = async() => {
 }
 export const getSingleBlog = async(blogId: string) => {
     try {
-        const data = await axiosInstance.get(`${envConfig.baseApi}/blog/${blogId}`);
+        const {data} = await axiosInstance.get(`${envConfig.baseApi}/blog/${blogId}`);
+        console.log(data)
         return data;
     } catch (error) {
         ThrowError(error)   

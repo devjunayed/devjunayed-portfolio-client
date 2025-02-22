@@ -28,9 +28,9 @@ export const useGetAllBlog = () => {
 };
 
 
-export const useGetSingleBlog = () => {
-  return useQuery<unknown, Error, string>({
+export const useGetSingleBlog = (blogId: string) => {
+  return useQuery<TBlogData[], Error, TBlogData[]>({
     queryKey: ["GET_SINGLE_BLOG"],
-    queryFn: async (blogId: string) => await getSingleBlog(blogId),
+    queryFn: async () => await getSingleBlog(blogId),
   });
 };
