@@ -7,8 +7,11 @@ import {
 } from "../../ui/animated-modal";
 import { Plus } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
+import FileUpload from "@/components/ui/FileUpload/file-upload";
 
 const AddProjects = () => {
+  const [open, setIsOpen] = useState(false);
+  const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
   const [formData, setFormData] = useState({
     projectTitle: "",
     isFeatured: false,
@@ -24,6 +27,14 @@ const AddProjects = () => {
   });
 
   const { mutate: handleCreateProject } = useCreateProject();
+  const handleFileUpload = (imageUrls: string[]) => {
+    if (imageUrls.length > 0) {
+      setFormData((prev) => ({
+        ...prev,
+        projectThumbnail: imageUrls[0],
+      }));
+    }
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -54,12 +65,13 @@ const AddProjects = () => {
     console.log(formData);
     // handleCreateProject(formData);
     // resetForm();
+    setResetKey(`${Date.now().toString()}`);
   };
 
   return (
     <>
       <div className="flex justify-end text-white">
-        <Modal>
+        <Modal open={open} setIsOpen={setIsOpen}>
           <ModalTrigger className="btn text-white rounded-2xl bg-transparent border border-white">
             <Plus /> Add Projects
           </ModalTrigger>
@@ -78,33 +90,28 @@ const AddProjects = () => {
                       placeholder="Project Title"
                       type="text"
                     />
-                    {/* Project Thumbnail */}
-                    <input
-                      name="projectThumbnail"
-                      value={formData.projectThumbnail}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Thumbnail URL"
-                      type="text"
-                    />
-                    {/* Client View Link */}
-                    <input
-                      name="projectClientViewLink"
-                      value={formData.projectClientViewLink}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Client View Link"
-                      type="text"
-                    />
-                    {/* Server View Link */}
-                    <input
-                      name="projectServerViewLink"
-                      value={formData.projectServerViewLink}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Server View Link"
-                      type="text"
-                    />
+
+                    <div className="flex gap-4 w-full">
+                      {/* Client View Link */}
+                      <input
+                        name="projectClientViewLink"
+                        value={formData.projectClientViewLink}
+                        onChange={handleInputChange}
+                        className="input"
+                        placeholder="Client View Link"
+                        type="text"
+                      />
+                      {/* Server View Link */}
+                      <input
+                        name="projectServerViewLink"
+                        value={formData.projectServerViewLink}
+                        onChange={handleInputChange}
+                        className="input"
+                        placeholder="Server View Link"
+                        type="text"
+                      />
+                    </div>
+
                     {/* Client Code Link */}
                     <input
                       name="projectClientCodeLink"
@@ -164,6 +171,15 @@ const AddProjects = () => {
 
                 {/* Right Side */}
                 <div className="flex  gap-2 flex-col w-3/12">
+                  <div className="text-center mx-auto mb-4  ">
+                    <FileUpload
+                      maxUpload={1}
+                      resetKey={resetKey}
+                      imgbbUrl={`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`}
+                      handleFileUpload={handleFileUpload}
+                      className="text-white"
+                    />
+                  </div>
                   <div className="flex items-center gap-2">
                     <input
                       id="isFeatured"
@@ -181,9 +197,9 @@ const AddProjects = () => {
                   </div>
                   {/* Submit Button */}
 
-                  <div className="flex justify-end">
+                  <div className="flex mt-4 justify-center">
                     <button
-                      className="btn bg-slate-900 rounded2xl py-1 border border-white  w-28"
+                      className="btn bg-slate-900 rounded2xl  border border-white  w-28"
                       onClick={handleSubmit}
                     >
                       Add Project

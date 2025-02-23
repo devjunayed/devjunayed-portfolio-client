@@ -9,21 +9,24 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState,
 } from "react";
 
 interface ModalContextType {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setIsOpen: (open: boolean) => void;
+}
+
+interface TModalProps {
+  children: ReactNode;
+  open: boolean;
+  setIsOpen: (open: boolean) => void;
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState(false);
-
+export const ModalProvider = ({ children, open, setIsOpen }: TModalProps) => {
   return (
-    <ModalContext.Provider value={{ open, setOpen }}>
+    <ModalContext.Provider value={{ open, setIsOpen }}>
       {children}
     </ModalContext.Provider>
   );
@@ -37,8 +40,8 @@ export const useModal = () => {
   return context;
 };
 
-export function Modal({ children }: { children: ReactNode }) {
-  return <ModalProvider>{children}</ModalProvider>;
+export function Modal({ children, open, setIsOpen }: TModalProps) {
+  return <ModalProvider open={open} setIsOpen={setIsOpen}>{children}</ModalProvider>;
 }
 
 export const ModalTrigger = ({
@@ -48,14 +51,14 @@ export const ModalTrigger = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { setOpen } = useModal();
+  const { setIsOpen } = useModal();
   return (
     <button
       className={cn(
         "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
         className
       )}
-      onClick={() => setOpen(true)}
+      onClick={() => setIsOpen(true)}
     >
       {children}
     </button>
@@ -80,8 +83,8 @@ export const ModalBody = ({
   }, [open]);
 
   const modalRef = useRef(null);
-  const { setOpen } = useModal();
-  useOutsideClick(modalRef, () => setOpen(false));
+  const { setIsOpen } = useModal();
+  useOutsideClick(modalRef, () => setIsOpen(false));
 
   return (
     <AnimatePresence>
@@ -132,8 +135,8 @@ export const ModalBody = ({
             }}
           >
             <div className=" justify-between mx-6 flex items-center">
-            <h1 className="bg-transparent text-xl">Add Project</h1>
-            <CloseIcon />
+              <h1 className="bg-transparent text-xl">Add Project</h1>
+              <CloseIcon />
             </div>
             {children}
           </motion.div>
@@ -196,12 +199,9 @@ const Overlay = ({ className }: { className?: string }) => {
 };
 
 const CloseIcon = () => {
-  const { setOpen } = useModal();
+  const { setIsOpen } = useModal();
   return (
-    <button
-      onClick={() => setOpen(false)}
-      className=" group"
-    >
+    <button onClick={() => setIsOpen(false)} className=" group">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
