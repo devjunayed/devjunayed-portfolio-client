@@ -1,6 +1,6 @@
 import React from "react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { TextGenerateEffect } from "../ui/text-generate-effect";
+import { TextGenerateEffect } from "../../../../components/ui/text-generate-effect";
 import Image from "next/image";
 import ProfileImg from "@/assets/image.png";
 import ReactImage from "@/assets/react.png";
@@ -9,8 +9,12 @@ import MongodbImage from "@/assets/mongodb.png";
 import ExpressImage from "@/assets/express.webp";
 import NodeImage from "@/assets/nodejs.png";
 import { Download } from "lucide-react";
-import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
-import UiVerseButton from "../ui/LinkButton/UiVerseButton";
+import {
+  CardBody,
+  CardContainer,
+  CardItem,
+} from "../../../../components/ui/3d-card";
+import UiVerseButton from "../../../../components/ui/LinkButton/UiVerseButton";
 
 export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
@@ -85,7 +89,7 @@ export function Hero() {
             "https://drive.google.com/file/d/1wsY96zMFD9yf8yKSugkCK6TFO8F9MOFw/view?usp=sharing"
           }
           text="Download Resume"
-          icon={<Download  />}
+          icon={<Download />}
         />
       </div>
     </BackgroundBeamsWithCollision>

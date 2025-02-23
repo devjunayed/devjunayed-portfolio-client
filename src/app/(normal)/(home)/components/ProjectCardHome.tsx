@@ -7,8 +7,10 @@ import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
+  console.log(project)
   return (
     <WobbleCard containerClassName="border border-white bg-transparent w-full h-full flex flex-col">
+      kire bokachoda
       {/* Flex container for content */}
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-6 w-full h-full flex-grow relative">
         {/* Text Section */}

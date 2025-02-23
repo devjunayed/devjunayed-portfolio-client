@@ -1,9 +1,9 @@
-import Education from "@/components/Home/Education";
-import { Hero } from "@/components/Home/Hero";
-import Skills from "@/components/Home/Skills";
+import Education from "@/app/(normal)/(home)/components/Education";
+import { Hero } from "@/app/(normal)/(home)/components/Hero";
+import Skills from "@/app/(normal)/(home)/components/Skills";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import React from "react";
-import { Projects } from "./projects/components/Projects";
+import { Projects } from "./components/Projects";
 
 const page = () => {
   return (
