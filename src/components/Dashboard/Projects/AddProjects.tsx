@@ -5,9 +5,12 @@ import {
   ModalContent,
   ModalTrigger,
 } from "../../ui/animated-modal";
-import { Plus } from "lucide-react";
+import { Code, PencilIcon, Plus, Text, View, ViewIcon } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
+import { Chip, Input, Select, SelectItem, Textarea } from "@heroui/react";
+import { IconLiveView } from "@tabler/icons-react";
+import { technologies } from "@/utils/technologies";
 
 const AddProjects = () => {
   const [open, setIsOpen] = useState(false);
@@ -82,71 +85,126 @@ const AddProjects = () => {
                 <div className="w-9/12 border-r-2 pr-8 border-white">
                   <div className="space-y-3 flex flex-col ">
                     {/* Project Title */}
-                    <input
+
+                    <Input
                       name="projectTitle"
                       value={formData.projectTitle}
                       onChange={handleInputChange}
-                      className="input"
+                      labelPlacement="outside"
                       placeholder="Project Title"
+                      endContent={
+                        <PencilIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                      }
                       type="text"
                     />
 
                     <div className="flex gap-4 w-full">
                       {/* Client View Link */}
-                      <input
+                      <Input
                         name="projectClientViewLink"
                         value={formData.projectClientViewLink}
                         onChange={handleInputChange}
-                        className="input"
+                        className="w-1/2"
+                        labelPlacement="outside"
                         placeholder="Client View Link"
+                        startContent={
+                          <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400 text-small">
+                              https://
+                            </span>
+                          </div>
+                        }
+                        endContent={
+                          <View className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                        }
                         type="text"
-                      />
+                      />{" "}
                       {/* Server View Link */}
-                      <input
+                      <Input
                         name="projectServerViewLink"
                         value={formData.projectServerViewLink}
                         onChange={handleInputChange}
-                        className="input"
+                        className=" w-1/2"
+                        labelPlacement="outside"
                         placeholder="Server View Link"
+                        startContent={
+                          <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400 text-small">
+                              https://
+                            </span>
+                          </div>
+                        }
+                        endContent={
+                          <ViewIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                        }
                         type="text"
                       />
                     </div>
 
-                    {/* Client Code Link */}
-                    <input
-                      name="projectClientCodeLink"
-                      value={formData.projectClientCodeLink}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Client Code Link"
-                      type="text"
-                    />
-                    {/* Server Code Link */}
-                    <input
-                      name="projectServerCodeLink"
-                      value={formData.projectServerCodeLink}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Server Code Link"
-                      type="text"
-                    />
+                    <div className="flex gap-4 w-full">
+                      {/* Client Code Link */}
+
+                      <Input
+                        name="projectClientCodeLink"
+                        value={formData.projectClientCodeLink}
+                        onChange={handleInputChange}
+                        className=" w-1/2"
+                        labelPlacement="outside"
+                        placeholder="Client Code Link"
+                        startContent={
+                          <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400 text-small">
+                              https://
+                            </span>
+                          </div>
+                        }
+                        endContent={
+                          <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                        }
+                        type="text"
+                      />
+                      {/* Server Code Link */}
+
+                      <Input
+                        name="projectServerCodeLink"
+                        value={formData.projectServerCodeLink}
+                        onChange={handleInputChange}
+                        className=" w-1/2"
+                        labelPlacement="outside"
+                        placeholder="Server Code Link"
+                        startContent={
+                          <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400 text-small">
+                              https://
+                            </span>
+                          </div>
+                        }
+                        endContent={
+                          <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                        }
+                        type="text"
+                      />
+                    </div>
                     {/* Description */}
-                    <textarea
-                      name="projectDescription"
+                    <Textarea
+                      name="projectShortDescription"
                       value={formData.projectDescription}
                       onChange={handleInputChange}
-                      className="textarea wrap min-h-24 input"
+                      className=" min-h-24 "
                       rows={6}
-                      placeholder="Project Description"
-                    ></textarea>
+                      endContent={
+                        <Text className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                      }
+                      placeholder="Project Short Description"
+                    ></Textarea>
                     {/* Short Description */}
                     <textarea
-                      name="projectShortDescription"
+                      name="projectDescription"
                       value={formData.projectShortDescription}
                       onChange={handleInputChange}
                       className="textarea wrap min-h-16 input"
                       rows={6}
-                      placeholder="Project Short Description"
+                      placeholder="Project  Description"
                     ></textarea>
                     {/* Tags */}
                     <input
@@ -179,6 +237,38 @@ const AddProjects = () => {
                       handleFileUpload={handleFileUpload}
                       className="text-white"
                     />
+                  </div>
+                  <div>
+                    <Select
+                      className="border-white "
+                      classNames={{
+                        base: "max-w-xs",
+                        trigger:
+                          "min-h-12 py-2 data-[open=true]:border-white data-[focus=true]:border-white",
+                      }}
+                      isMultiline={true}
+                      items={technologies}
+                      label="Used Tech"
+                      labelPlacement="outside"
+                      placeholder="Select Tech"
+                      renderValue={(items) => {
+                        return (
+                          <div className="flex flex-wrap gap-2">
+                            {items.map((item) => (
+                              <Chip key={item.key}>{item?.data?.name}</Chip>
+                            ))}
+                          </div>
+                        );
+                      }}
+                      selectionMode="multiple"
+                      variant="bordered"
+                    >
+                      {(tech) => (
+                        <SelectItem key={tech.id} textValue={tech.name}>
+                          <span className="text-small">{tech.name}</span>
+                        </SelectItem>
+                      )}
+                    </Select>
                   </div>
                   <div className="flex items-center gap-2">
                     <input

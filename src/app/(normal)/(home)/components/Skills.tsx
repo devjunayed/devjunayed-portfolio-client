@@ -14,7 +14,7 @@ const Skills = async () => {
       {skillData && skillData.data.length > 0 && (
         <div className="mx-6">
           <Heading title="skills" />
-          <div className=" rounded-md flex flex-col antialiased k dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+          <div className=" rounded-md flex flex-col antialiased  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
             <InfiniteMovingCards
               items={skillData?.data[0]?.skills}
               direction="right"
