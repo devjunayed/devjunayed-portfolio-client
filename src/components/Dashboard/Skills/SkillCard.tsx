@@ -7,19 +7,20 @@ import {
 } from "@/components/ui/animated-modal";
 import { TSkill } from "@/types";
 import { Delete, Edit } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 const SkillCard = ({ skill }: { skill: TSkill }) => {
+  const [open, setIsOpen] = useState(false);
   return (
     <div key={skill.icon}>
-      <Modal>
+      <Modal open={open} setIsOpen={setIsOpen}>
         <ModalTrigger>
           <img
             alt={skill.icon}
             src={`https://skillicons.dev/icons?i=${skill.icon}`}
           />
         </ModalTrigger>
-        <ModalBody>
+        <ModalBody modalTitle="Edit Skill">
           <ModalContent>
             <div className="flex items-center flex-col gap-2">
               <img

@@ -45,6 +45,7 @@ export function Modal({ children, open, setIsOpen }: TModalProps) {
 }
 
 export const ModalTrigger = ({
+  
   children,
   className,
 }: {
@@ -66,9 +67,11 @@ export const ModalTrigger = ({
 };
 
 export const ModalBody = ({
+  modalTitle,
   children,
   className,
 }: {
+  modalTitle: string;
   children: ReactNode;
   className?: string;
 }) => {
@@ -135,7 +138,7 @@ export const ModalBody = ({
             }}
           >
             <div className=" justify-between mx-6 flex items-center">
-              <h1 className="bg-transparent text-xl">Add Project</h1>
+              <h1 className="bg-transparent text-white text-xl">{modalTitle}</h1>
               <CloseIcon />
             </div>
             {children}

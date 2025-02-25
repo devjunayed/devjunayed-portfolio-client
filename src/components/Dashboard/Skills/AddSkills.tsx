@@ -18,6 +18,7 @@ const AddSkills = () => {
     categoryName: "frontend",
   });
 
+  const [open, setIsOpen] = useState(false);
   const [skillIcons, setSkillIcons] = useState(frontendIcons);
 
   const { mutate: handleCreateSkill } = useCreateSkill();
@@ -57,16 +58,17 @@ const AddSkills = () => {
     console.log("Form Data:", formData);
     handleCreateSkill(formData);
     resetForm();
+    setIsOpen(false);
   };
   return (
     <>
       {/* Add Skill Modal */}
       <div className="flex justify-end text-white">
-        <Modal>
-          <ModalTrigger className="btn rounded-md bg-transparent border border-white">
+        <Modal open={open} setIsOpen={setIsOpen} >
+          <ModalTrigger className="btn text-white rounded-xl bg-transparent border border-white">
             <Plus /> Add Skills
           </ModalTrigger>
-          <ModalBody>
+          <ModalBody modalTitle="Add Skills">
             <ModalContent className="bg-slate-900">
               <div className="space-y-3 flex flex-col">
                 {/* Skill Name */}
@@ -121,10 +123,10 @@ const AddSkills = () => {
                 </select>
               </div>
             </ModalContent>
-            <ModalFooter className="bg-slate-900 px-10">
+            <ModalFooter className="bg-slate-900 w-full ">
               {/* Submit Button */}
               <button
-                className="btn bg-slate-900 py-1  border border-white rounded-lg w-28"
+                className="btn  mx-auto bg-slate-900 py-1  border border-white rounded-xl w-28"
                 onClick={handleSubmit}
               >
                 Add Skill
