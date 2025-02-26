@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   Modal,
@@ -9,8 +10,12 @@ import { Code, PencilIcon, Plus, Text, View, ViewIcon } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
 import { Chip, Input, Select, SelectItem, Textarea } from "@heroui/react";
-import { IconLiveView } from "@tabler/icons-react";
 import { technologies } from "@/utils/technologies";
+import { tags } from "@/utils/tags";
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), {
+  ssr: false, // Disable server-side rendering
+});
 
 const AddProjects = () => {
   const [open, setIsOpen] = useState(false);
@@ -30,6 +35,27 @@ const AddProjects = () => {
   });
 
   const { mutate: handleCreateProject } = useCreateProject();
+
+  const config = {
+    readonly: false,
+    placeholder: "Start typing...",
+    toolbarAdaptive: false,
+    toolbarSticky: true,
+    showXPathInStatusbar: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    spellcheck: true,
+    askBeforePasteHTML: false,
+    askBeforePasteFromWord: false,
+    buttons:
+      "bold,italic,underline,strikethrough,|,ul,ol,|,font,fontsize,|,align,undo,redo,table",
+    height: 400,
+    width: "100%",
+    style: {
+      color: "#000", // Ensuring black text color
+    },
+  };
+
   const handleFileUpload = (imageUrls: string[]) => {
     if (imageUrls.length > 0) {
       setFormData((prev) => ({
@@ -66,8 +92,8 @@ const AddProjects = () => {
 
   const handleSubmit = () => {
     console.log(formData);
-    // handleCreateProject(formData);
-    // resetForm();
+    handleCreateProject(formData);
+    resetForm();
     setResetKey(`${Date.now().toString()}`);
   };
 
@@ -78,7 +104,7 @@ const AddProjects = () => {
           <ModalTrigger className="btn text-white rounded-2xl bg-transparent border border-white">
             <Plus /> Add Projects
           </ModalTrigger>
-          <ModalBody>
+          <ModalBody modalTitle="Add Project">
             <ModalContent className="bg-slate-900 overflow-y-scroll">
               <div className="flex  justify-between gap-8 w-full">
                 {/* Left side */}
@@ -185,45 +211,32 @@ const AddProjects = () => {
                         type="text"
                       />
                     </div>
-                    {/* Description */}
+                    {/* Short Description */}
                     <Textarea
                       name="projectShortDescription"
                       value={formData.projectDescription}
                       onChange={handleInputChange}
-                      className=" min-h-24 "
                       rows={6}
                       endContent={
                         <Text className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                       }
                       placeholder="Project Short Description"
                     ></Textarea>
-                    {/* Short Description */}
-                    <textarea
-                      name="projectDescription"
-                      value={formData.projectShortDescription}
-                      onChange={handleInputChange}
-                      className="textarea wrap min-h-16 input"
-                      rows={6}
-                      placeholder="Project  Description"
-                    ></textarea>
-                    {/* Tags */}
-                    <input
-                      name="projectTags"
-                      value={formData.projectTags}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Project Tags (comma-separated)"
-                      type="text"
-                    />
-                    {/* Technologies */}
-                    <input
-                      name="projectTechnologies"
-                      value={formData.projectTechnologies}
-                      onChange={handleInputChange}
-                      className="input"
-                      placeholder="Technologies Used (comma-separated)"
-                      type="text"
-                    />
+                    {/*  Description */}
+
+                    <div className="rounded-xl p-4 bg-white">
+                      <JoditEditor
+                        value={formData.projectDescription}
+                        config={config}
+                        className="w-full h-full border-none"
+                        onBlur={(value) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            projectDescription: value,
+                          }))
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -237,6 +250,38 @@ const AddProjects = () => {
                       handleFileUpload={handleFileUpload}
                       className="text-white"
                     />
+                  </div>
+                  <div>
+                    <Select
+                      className="border-white "
+                      classNames={{
+                        base: "max-w-xs",
+                        trigger:
+                          "min-h-12 py-2 data-[open=true]:border-white data-[focus=true]:border-white",
+                      }}
+                      isMultiline={true}
+                      items={tags}
+                      label="Project Tags"
+                      labelPlacement="outside"
+                      placeholder="Select Tags"
+                      renderValue={(items) => {
+                        return (
+                          <div className="flex flex-wrap gap-2">
+                            {items.map((item) => (
+                              <Chip key={item.key}>{item?.data?.title}</Chip>
+                            ))}
+                          </div>
+                        );
+                      }}
+                      selectionMode="multiple"
+                      variant="bordered"
+                    >
+                      {(tag) => (
+                        <SelectItem key={tag.id} textValue={tag.title}>
+                          <span className="text-small">{tag.title}</span>
+                        </SelectItem>
+                      )}
+                    </Select>
                   </div>
                   <div>
                     <Select
