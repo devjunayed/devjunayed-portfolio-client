@@ -9,7 +9,6 @@ import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 export function Projects() {
   const { data: projectData } = useGetAllProjects();
 
-  console.log(projectData)
 
   return (
     <>

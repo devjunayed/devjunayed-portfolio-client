@@ -1,13 +1,11 @@
 import React from "react";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { TProjectData } from "@/types";
-import Image from "next/image";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
-  console.log(project)
   return (
     <WobbleCard containerClassName="border border-white bg-transparent w-full h-full flex flex-col">
       {/* Flex container for content */}
@@ -40,14 +38,12 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
         </div>
 
         {/* Image Section */}
-        <div className="w-full md:w-1/2 relative h-[400px]">
-          <Image
-            src={project.projectThumbnail}
-            fill
-            alt="Project image"
-            className="w-full  object-cover rounded-2xl"
-          />
-        </div>
+        <div
+          className={`w-full bg-cover bg-top  md:w-1/2 relative h-[200px] md:h-[400px] transition-all   hover:bg-bottom linear  bg-image-scroll`}
+          style={{
+            backgroundImage: `url(${project.projectThumbnail})`,
+          }}
+        ></div>
       </div>
     </WobbleCard>
   );

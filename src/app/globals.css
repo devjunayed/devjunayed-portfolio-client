@@ -10,3 +10,10 @@
     all: unset !important;
     /* font-size: initial !important; */
 }
+
+.bg-image-scroll:hover{
+    transition-duration: 5s;
+}
+.bg-image-scroll{
+    transition-duration: 2s;
+}
