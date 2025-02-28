@@ -21,6 +21,10 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
           <p className="mt-4 flex-grow flex   text-left text-sm md:text-base lg:text-lg text-neutral-200">
             {project.projectDescription}
           </p>
+
+          <div>
+            
+          </div>
           {/* Buttons at the bottom-left of the card */}
 
           <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">

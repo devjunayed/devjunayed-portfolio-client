@@ -8,23 +8,23 @@ import {  FileTextIcon, Folder, Star } from "lucide-react";
 export const creatorLinks = [
   {
     label: "Dashboard",
-    href: `dashboard`,
+    href: `creator/dashboard`,
     icon: <IconBrandTabler className="text-white h-5 w-5" />,
   },
   {
     label: "Blog",
     icon: <FileTextIcon className="text-white h-5 w-5" />,
-    href: "blog"
+    href: "creator/blog"
   },
   {
     label: "Skills",
     icon: <Star className="text-white h-5 w-5" />,
-    href: "skills",
+    href: "creator/skills",
   },
   {
     label: "Projects",
     icon: <Folder className="text-white h-5 w-5" />,
-    href: "projects"
+    href: "creator/projects"
     
   },
 

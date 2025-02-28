@@ -9,7 +9,7 @@ import {
 import { Code, PencilIcon, Plus, Text, View, ViewIcon } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
-import { Chip, Input, Select, SelectItem, Textarea } from "@heroui/react";
+import { Chip, Input, Select, Selection, SelectItem, Textarea } from "@heroui/react";
 import { technologies } from "@/utils/technologies";
 import { tags } from "@/utils/tags";
 import dynamic from "next/dynamic";
@@ -19,6 +19,14 @@ const JoditEditor = dynamic(() => import("jodit-react"), {
 
 const AddProjects = () => {
   const [open, setIsOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = React.useState<Selection>(new Set([]));
+
+
+  const [selectedTech, setSelectedTech] = React.useState<Selection>(
+    new Set([])
+  );
+
+
   const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
   const [formData, setFormData] = useState({
     projectTitle: "",
@@ -30,12 +38,22 @@ const AddProjects = () => {
     projectServerCodeLink: "",
     projectDescription: "",
     projectShortDescription: "",
-    projectTags: "",
-    projectTechnologies: "",
+    projectTags: [],
+    projectTechnologies: [],
   });
 
   const { mutate: handleCreateProject } = useCreateProject();
 
+  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTags(new Set(e.target.value.split(",")));
+    setFormData((prev) => ({...prev, projectTags: selectedTags}));
+
+  };
+
+  const handleTechChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTech(new Set(e.target.value.split(",")));
+    setFormData((prev) => ({...prev, projectTechnologies: selectedTech}));
+  };
   const config = {
     readonly: false,
     placeholder: "Start typing...",
@@ -92,9 +110,9 @@ const AddProjects = () => {
 
   const handleSubmit = () => {
     console.log(formData);
-    handleCreateProject(formData);
-    resetForm();
-    setResetKey(`${Date.now().toString()}`);
+    // handleCreateProject(formData);
+    // resetForm();
+    // setResetKey(`${Date.now().toString()}`);
   };
 
   return (
@@ -253,14 +271,10 @@ const AddProjects = () => {
                   </div>
                   <div>
                     <Select
-                      className="border-white "
-                      classNames={{
-                        base: "max-w-xs",
-                        trigger:
-                          "min-h-12 py-2 data-[open=true]:border-white data-[focus=true]:border-white",
-                      }}
                       isMultiline={true}
                       items={tags}
+                      selectedKeys={selectedTags}
+                      onChange={handleTagsChange}
                       label="Project Tags"
                       labelPlacement="outside"
                       placeholder="Select Tags"
