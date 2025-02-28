@@ -9,7 +9,14 @@ import {
 import { Code, PencilIcon, Plus, Text, View, ViewIcon } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
-import { Chip, Input, Select, Selection, SelectItem, Textarea } from "@heroui/react";
+import {
+  Chip,
+  Input,
+  Select,
+  SelectItem,
+  SelectSection,
+  Textarea,
+} from "@heroui/react";
 import { technologies } from "@/utils/technologies";
 import { tags } from "@/utils/tags";
 import dynamic from "next/dynamic";
@@ -18,14 +25,7 @@ const JoditEditor = dynamic(() => import("jodit-react"), {
 });
 
 const AddProjects = () => {
-  const [open, setIsOpen] = useState(false);
-  const [selectedTags, setSelectedTags] = React.useState<Selection>(new Set([]));
-
-
-  const [selectedTech, setSelectedTech] = React.useState<Selection>(
-    new Set([])
-  );
-
+  const [modalOpen, setIsModalOpen] = useState(false);
 
   const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
   const [formData, setFormData] = useState({
@@ -38,21 +38,24 @@ const AddProjects = () => {
     projectServerCodeLink: "",
     projectDescription: "",
     projectShortDescription: "",
-    projectTags: [],
-    projectTechnologies: [],
+    projectTags: [] as string[],
+    projectTechnologies: [] as string[],
   });
 
   const { mutate: handleCreateProject } = useCreateProject();
 
   const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTags(new Set(e.target.value.split(",")));
-    setFormData((prev) => ({...prev, projectTags: selectedTags}));
-
+    setFormData((prev) => ({
+      ...prev,
+      projectTags: Array.from(new Set(e.target.value.split(","))),
+    }));
   };
 
   const handleTechChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTech(new Set(e.target.value.split(",")));
-    setFormData((prev) => ({...prev, projectTechnologies: selectedTech}));
+    setFormData((prev) => ({
+      ...prev,
+      projectTechnologies: Array.from(new Set(e.target.value.split(","))),
+    }));
   };
   const config = {
     readonly: false,
@@ -103,8 +106,8 @@ const AddProjects = () => {
       projectServerCodeLink: "",
       projectDescription: "",
       projectShortDescription: "",
-      projectTags: "",
-      projectTechnologies: "",
+      projectTags: [] as string[],
+      projectTechnologies: [] as string[],
     });
   };
 
@@ -115,10 +118,16 @@ const AddProjects = () => {
     // setResetKey(`${Date.now().toString()}`);
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredTags = tags.filter((tag) =>
+    tag.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <div className="flex justify-end text-white">
-        <Modal open={open} setIsOpen={setIsOpen}>
+        <Modal open={modalOpen} setIsOpen={setIsModalOpen}>
           <ModalTrigger className="btn text-white rounded-2xl bg-transparent border border-white">
             <Plus /> Add Projects
           </ModalTrigger>
@@ -232,7 +241,7 @@ const AddProjects = () => {
                     {/* Short Description */}
                     <Textarea
                       name="projectShortDescription"
-                      value={formData.projectDescription}
+                      value={formData.projectShortDescription}
                       onChange={handleInputChange}
                       rows={6}
                       endContent={
@@ -269,32 +278,43 @@ const AddProjects = () => {
                       className="text-white"
                     />
                   </div>
+
                   <div>
                     <Select
-                      isMultiline={true}
-                      items={tags}
-                      selectedKeys={selectedTags}
+                      isMultiline
+                      items={filteredTags}
                       onChange={handleTagsChange}
                       label="Project Tags"
                       labelPlacement="outside"
                       placeholder="Select Tags"
-                      renderValue={(items) => {
-                        return (
-                          <div className="flex flex-wrap gap-2">
-                            {items.map((item) => (
-                              <Chip key={item.key}>{item?.data?.title}</Chip>
-                            ))}
-                          </div>
-                        );
-                      }}
+                      renderValue={(items) =>
+                        items.map((item) => (
+                          <Chip key={item.key}>{item?.data?.title}</Chip>
+                        ))
+                      }
                       selectionMode="multiple"
                       variant="bordered"
                     >
-                      {(tag) => (
-                        <SelectItem key={tag.id} textValue={tag.title}>
-                          <span className="text-small">{tag.title}</span>
+                      <>
+                        {/* Search Input */}
+                        <SelectItem key="search-input" textValue="">
+                          <input
+                            type="text"
+                            className="text-black w-full p-2 border-b"
+                            placeholder="Search Tags..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onClick={(e) => e.stopPropagation()} // Prevent selection on click
+                          />
                         </SelectItem>
-                      )}
+
+                        {/* Filtered Tags */}
+                        {filteredTags.map((tag) => (
+                          <SelectItem key={tag.key} textValue={tag.title}>
+                            <span className="text-small">{tag.title}</span>
+                          </SelectItem>
+                        ))}
+                      </>
                     </Select>
                   </div>
                   <div>
@@ -303,11 +323,12 @@ const AddProjects = () => {
                       classNames={{
                         base: "max-w-xs",
                         trigger:
-                          "min-h-12 py-2 data-[open=true]:border-white data-[focus=true]:border-white",
+                          "min-h-12 py-2 data-[modalOpen=true]:border-white data-[focus=true]:border-white",
                       }}
                       isMultiline={true}
                       items={technologies}
                       label="Used Tech"
+                      onChange={handleTechChange}
                       labelPlacement="outside"
                       placeholder="Select Tech"
                       renderValue={(items) => {
@@ -323,7 +344,7 @@ const AddProjects = () => {
                       variant="bordered"
                     >
                       {(tech) => (
-                        <SelectItem key={tech.id} textValue={tech.name}>
+                        <SelectItem key={tech.name} textValue={tech.name}>
                           <span className="text-small">{tech.name}</span>
                         </SelectItem>
                       )}
