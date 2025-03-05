@@ -5,7 +5,7 @@ import {
   ModalBody,
   ModalContent,
   ModalTrigger,
-} from "../../ui/animated-modal";
+} from "../../../../../components/ui/animated-modal";
 import { Code, PencilIcon, Plus, Text, View, ViewIcon } from "lucide-react";
 import { useCreateProject } from "@/hooks/project.hook";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
