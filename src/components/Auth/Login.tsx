@@ -37,26 +37,42 @@ const Login = () => {
   }, [isPending, isSuccess, user]);
 
   return (
-    <div className="flex items-center justify-center w-full h-screen ">
+    <div className="flex text-white items-center justify-center w-full h-screen ">
       {/* inner container */}
       <div className="flex sm:flex-row flex-col border-primary w-full mx-4 sm:mx-10 md:w-1/2  h-1/2 shadow-white shadow rounded">
         {/* Right Side */}
         <div className="w-full  p-8 flex flex-col justify-center">
-          <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Label className="mb-4" htmlFor="email">Email</Label>
-            <Input name="email" id="email" placeholder="email@gamil.com" type="text" />
-          </div>
-          <div>
-            <Label className="mb-4" htmlFor="password">Password</Label>
-            <Input name="password" id="password" placeholder="password" type="password" />
-          </div>
-           
+          <form onSubmit={handleSubmit} className="space-y-4 text-white">
+            <div>
+              <Label className="mb-4 text-white" htmlFor="email">
+                Email
+              </Label>
+              <Input
+                name="email"
+                className="mt-2"
+                id="email"
+                placeholder="email@gamil.com"
+                type="text"
+              />
+            </div>
+            <div>
+              <Label className="mb-4 text-white" htmlFor="password">
+                Password
+              </Label>
+              <Input
+                name="password"
+                className="mt-2"
+                id="password"
+                placeholder="password"
+                type="password"
+              />
+            </div>
+
             <div className="flex justify-center">
               <button
                 disabled={isPending}
                 type="submit"
-                className="inline-flex mx h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                className="inline-flex px-6 py-2  items-center justify-center rounded-[10px] border  text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
               >
                 {isPending ? (
                   <CircleLoader size={24} color="white" />
