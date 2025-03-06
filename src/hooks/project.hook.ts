@@ -1,4 +1,4 @@
-import { createProject, getAllProjects } from "@/services/ProjectService";
+import { createProject, getAllProjects, getFeaturedProjects } from "@/services/ProjectService";
 import { TProjectData } from "@/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
@@ -26,5 +26,14 @@ export const useGetAllProjects = () => {
   return useQuery<unknown, Error, TProjectData[]>({
     queryKey: ["GET_ALL_PROJECTS"],
     queryFn: async () => await getAllProjects(),
+  });
+};
+
+
+// Hook to get featured projects
+export const useGetFeaturedProjects = () => {
+  return useQuery<unknown, Error, TProjectData[]>({
+    queryKey: ["GET_FEATURED_PROJECTS"],
+    queryFn: async () => await getFeaturedProjects(),
   });
 };

@@ -24,3 +24,12 @@ export const getAllProjects = async () => {
     ThrowError(error); // Handle the error using your utility function
   }
 };
+// Function to fetch all featured projects
+export const getFeaturedProjects = async () => {
+  try {
+    const { data } = await axiosInstance.get("/project/featured");
+    return data.data; // Assuming the response structure has 'data' that contains the projects
+  } catch (error) {
+    ThrowError(error); // Handle the error using your utility function
+  }
+};

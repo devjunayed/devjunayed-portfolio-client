@@ -24,9 +24,9 @@ const RightSide = ({ formData, setFormData, initialFormData }: TRightSide) => {
 
   const handleSubmit = () => {
     console.log(formData);
-    // handleCreateProject(formData);
-    // resetForm();
-    // setResetKey(`${Date.now().toString()}`);
+    handleCreateProject(formData);
+    resetForm();
+    setResetKey(`${Date.now().toString()}`);
   };
 
   const handleFileUpload = (imageUrls: string[]) => {
