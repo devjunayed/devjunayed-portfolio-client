@@ -30,7 +30,7 @@ export type TBlogData = {
 }
 
 // types.ts
-export interface TProjectData {
+export type  TProjectData = {
   _id?: string;
   projectTitle: string;
   projectThumbnail: string;
@@ -40,7 +40,7 @@ export interface TProjectData {
   projectServerCodeLink: string;
   projectDescription: string;
   projectShortDescription: string;
-  projectTags: string;
+  projectTags: string[];
   isFeatured: boolean;
-  projectTechnologies: string;
+  projectTechnologies: string[];
 }

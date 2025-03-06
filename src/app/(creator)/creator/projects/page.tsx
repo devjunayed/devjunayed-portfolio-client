@@ -1,7 +1,8 @@
 "use client";
-import AddProjects from "@/app/(creator)/creator/projects/components/AddProjects";
+
 import AllProjects from "@/app/(creator)/creator/projects/components/AllProjects";
 import "@/components/ui/css/reset-tailwind.css";
+import AddProjects from "./components/AddProjects";
 
 const page = () => {
   return (
