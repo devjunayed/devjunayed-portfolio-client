@@ -19,7 +19,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
 
           {/* Description */}
           <p className="mt-4 flex-grow flex   text-left text-sm md:text-base lg:text-lg text-neutral-200">
-            {project.projectDescription}
+            {project.projectShortDescription}
           </p>
 
           <div>

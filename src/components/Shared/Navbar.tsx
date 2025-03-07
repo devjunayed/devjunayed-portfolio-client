@@ -1,4 +1,4 @@
-import { HomeIcon, InfoIcon, MailIcon } from "lucide-react";
+import { Code, HomeIcon,  MailIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { IoMdDocument } from "react-icons/io";
@@ -16,9 +16,9 @@ const Navbar = () => {
       icon: <IoMdDocument size={24} />,
     },
     {
-      title: "About",
-      path: "#about",
-      icon: <InfoIcon size={24} />,
+      title: "Projects",
+      path: "/projects",
+      icon: <Code size={24} />,
     },
   ];
   return (
@@ -48,7 +48,7 @@ const Navbar = () => {
             </ul>
             {/* For mobile menu */}
             {/* Drawer start */}
-            <div className="drawer md:hidden flex justify-end drawer-end w-7 ">
+            <div className="drawer lg:hidden flex justify-end drawer-end w-7 ">
               <input
                 id="my-drawer-3"
                 type="checkbox"

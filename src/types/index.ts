@@ -22,7 +22,7 @@ export type TSkillData = {
 };
 
 export type TBlogData = {
-  _id: string;
+  _id?: string;
   title: string;
   thumbnail: string;
   shortDescription: string;
