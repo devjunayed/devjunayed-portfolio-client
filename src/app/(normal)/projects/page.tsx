@@ -6,7 +6,7 @@ import Heading from "@/components/Shared/Heading";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import ProjectCardHome from "../(home)/components/ProjectCardHome";
 
-export function ProjectsPage() {
+export default function ProjectsPage() {
   const { data: projectData } = useGetFeaturedProjects();
 
   return (
