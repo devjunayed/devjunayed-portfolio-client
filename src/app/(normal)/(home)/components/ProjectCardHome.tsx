@@ -5,6 +5,7 @@ import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
 import { Modal } from "antd";
+import { Chip } from "@heroui/react";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
   const [modalOpen, setIsModalOpen] = useState(false);
@@ -19,17 +20,32 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
             {project.projectTitle}
           </h2>
 
+          {/* Tags */}
+          <div className="mt-4 flex gap-2">
+            {project.projectTags.map((tag, index) => (
+              <Chip key={`tag${index}`}>{tag}</Chip>
+            ))}
+          </div>
           {/* Description */}
           <p className="mt-4 flex-grow flex   text-left text-sm md:text-base lg:text-lg text-neutral-200">
             {project.projectShortDescription}
           </p>
 
-          <div></div>
+          <div className="mt-4 flex gap-1 items-center text-white">
+            <p>Used Tech :</p>
+            <div className="flex gap-1">
+              {project.projectTechnologies.map((tech, index) => (
+                <Chip variant="shadow" color="secondary" key={`tech${index}`}>
+                  {tech}
+                </Chip>
+              ))}
+            </div>
+          </div>
           {/* Buttons at the bottom-left of the card */}
 
           <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">
             <Modal
-              classNames={{body: "black" , }}
+              classNames={{ body: "black" }}
               className="bg-transparent"
               title={project.projectTitle}
               width={{
@@ -40,7 +56,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
                 xl: "95%",
                 xxl: "95%",
               }}
-              style={{backgroundColor: "transparent", top: 20}}
+              style={{ backgroundColor: "transparent", top: 20 }}
               open={modalOpen}
               onOk={() => setIsModalOpen(false)}
               onCancel={() => setIsModalOpen(false)}
