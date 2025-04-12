@@ -4,7 +4,7 @@ import { MoveRight } from "lucide-react";
 import { useGetFeaturedProjects } from "@/hooks/project.hook";
 import Heading from "@/components/Shared/Heading";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import ProjectCardHome from "../(home)/components/ProjectCardHome";
+import ProjectCardHome from "../(home)/components/FeaturedProjects/ProjectCardHome";
 
 export default function ProjectsPage() {
   const { data: projectData } = useGetFeaturedProjects();

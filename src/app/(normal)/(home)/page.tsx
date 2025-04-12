@@ -3,17 +3,19 @@ import { Hero } from "@/app/(normal)/(home)/components/Hero/Hero";
 import Skills from "@/app/(normal)/(home)/components/Skills";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import React from "react";
-import { Projects } from "./components/Projects";
 import ContactUs from "./components/ContactUs/ContactUs";
+import FeaturedBlog from "./components/FeaturedBlog/FeaturedBlog";
+import { Projects } from "./components/FeaturedProjects/Projects";
 
 const page = () => {
   return (
     <div className="bg-slate-900 mt-20 ">
-      <TracingBeam className="h-full">
+      <TracingBeam className="min-h-screen">
         <Hero />
         <Education />
         <Skills />
         <Projects />
+        <FeaturedBlog />
         <ContactUs />
       </TracingBeam>
     </div>

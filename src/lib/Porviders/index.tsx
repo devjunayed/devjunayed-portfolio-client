@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { HeroUIProvider } from "@heroui/react";
+import '@ant-design/v5-patch-for-react-19';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();

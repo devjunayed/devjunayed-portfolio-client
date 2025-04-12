@@ -13,7 +13,7 @@ export function Projects() {
     <>
       {projectData && projectData?.length > 0 && (
         <div className="mx-6">
-          <Heading title="projects" />
+          <Heading title="featured projects" />
           <div className="">
             <div className="flex flex-col gap-4 mt-4">
               {projectData?.map((project, index) => {
