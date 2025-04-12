@@ -1,5 +1,5 @@
 import Education from "@/app/(normal)/(home)/components/Education";
-import { Hero } from "@/app/(normal)/(home)/components/Hero";
+import { Hero } from "@/app/(normal)/(home)/components/Hero/Hero";
 import Skills from "@/app/(normal)/(home)/components/Skills";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import React from "react";
