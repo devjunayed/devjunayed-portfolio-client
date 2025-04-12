@@ -13,8 +13,8 @@ type Role = keyof typeof roleBasedRoutes;
 export async function middleware(request: NextRequest) {
     const {pathname} = request.nextUrl;
 
-    const accessToken = cookies()?.get("access-token")?.value;
-
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("access-token")?.value;
 
     
     if(!accessToken){
@@ -27,7 +27,10 @@ export async function middleware(request: NextRequest) {
         }
     }
 
+
     const decode = jwtDecode(accessToken) as any;
+
+
 
     if(decode?.role && roleBasedRoutes[decode?.role as Role]){
         const routes = roleBasedRoutes[decode?.role as Role];
@@ -36,6 +39,10 @@ export async function middleware(request: NextRequest) {
             return NextResponse.next();
         }
     }
+
+    console.log(decode)
+
+    cookieStore.delete("access-token");
 
     return NextResponse.redirect(new URL("/", request.url));
 }

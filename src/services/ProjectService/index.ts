@@ -33,3 +33,12 @@ export const getFeaturedProjects = async () => {
     ThrowError(error); // Handle the error using your utility function
   }
 };
+
+export const getSingleProject = async(projectId: string) => {
+  try {
+    const { data } = await axiosInstance.get(`/project/${projectId}`);
+    return data.data; 
+  } catch (error) {
+    ThrowError(error); // Handle the error using your utility function
+  }
+}

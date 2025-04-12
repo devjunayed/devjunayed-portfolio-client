@@ -5,10 +5,11 @@ import Image from "next/image";
 import ProfileImg from "@/assets/image.png";
 
 interface BlogDetailProps {
-  params: { blogId: string };
+  params: Promise<{ blogId: string }>;
 }
 
-const BlogDetail = async ({ params }: BlogDetailProps) => {
+const BlogDetail = async (props: BlogDetailProps) => {
+  const params = await props.params;
   const { blogId } = params;
 
   let data = null;

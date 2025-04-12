@@ -29,3 +29,10 @@
 .bg-image-scroll{
     transition-duration: 2s;
 }
+
+.ant-modal-content {
+  background-color: #CBD5E1 !important;
+}
+.ant-modal-header {
+  background-color: #CBD5E1 !important;
+}

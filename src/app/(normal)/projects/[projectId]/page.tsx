@@ -1,9 +1,17 @@
 import React from "react";
+import SingleProjectCard from "./components/SingleProjectCard";
 
-const SingleProjectPage = () => {
+const SingleProjectPage = async ({
+  params,
+}: {
+  params: Promise<{ projectId: string }>;
+}) => {
+  const {projectId} = await params;
+
+
   return (
     <div className="mt-20  max-w-6xl mx-auto   text-white">
-      <div className="mx-6">single project page</div>
+      <SingleProjectCard projectId={projectId} />
     </div>
   );
 };

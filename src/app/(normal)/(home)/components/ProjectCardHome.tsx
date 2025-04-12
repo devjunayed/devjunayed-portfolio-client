@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { TProjectData } from "@/types";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
+import { Modal } from "antd";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
+  const [modalOpen, setIsModalOpen] = useState(false);
   return (
     <WobbleCard containerClassName="border border-white bg-transparent w-full h-full flex flex-col">
       {/* Flex container for content */}
@@ -22,15 +24,36 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
             {project.projectShortDescription}
           </p>
 
-          <div>
-            
-          </div>
+          <div></div>
           {/* Buttons at the bottom-left of the card */}
 
           <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">
+            <Modal
+              classNames={{body: "black" , }}
+              className="bg-transparent"
+              title={project.projectTitle}
+              width={{
+                xs: "95%",
+                sm: "95%",
+                md: "95%",
+                lg: "95%",
+                xl: "95%",
+                xxl: "95%",
+              }}
+              style={{backgroundColor: "transparent", top: 20}}
+              open={modalOpen}
+              onOk={() => setIsModalOpen(false)}
+              onCancel={() => setIsModalOpen(false)}
+              footer={null}
+            >
+              <iframe
+                className="w-full min-h-[85vh]"
+                src={project.projectClientViewLink}
+              ></iframe>
+            </Modal>
             <UiVerseButton
+              onClick={() => setIsModalOpen(true)}
               icon={<IconEye />}
-              href={project.projectClientViewLink}
               text="Preview"
             />
             <UiVerseButton
