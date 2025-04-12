@@ -2,12 +2,20 @@ import { createNewBlog, getAllBlog, getSingleBlog } from "@/services/BlogService
 import { TBlogData } from "@/types";
 import {  useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import {useQueryClient} from "@tanstack/react-query";
 
 export const useCreateBlog = () => {
+  const queryClient = useQueryClient();
   return useMutation<unknown, Error, unknown>({
     mutationKey: ["CREATE_BLOG"],
     mutationFn: async (blogData) => await createNewBlog(blogData),
     onSuccess: () => {
+
+      queryClient.invalidateQueries({
+        queryKey: ["GET_ALL_BLOG"],
+        exact: true,
+      })
+
       toast.success("Create blog successfully", {
         position: "top-center",
       });

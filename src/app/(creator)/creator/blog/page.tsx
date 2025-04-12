@@ -1,12 +1,16 @@
-"use client"
-import AddBlog from "@/components/Dashboard/Blog/AddBlog"
+"use client";
+
+import "@/components/ui/css/reset-tailwind.css";
+import AddBlog from "./components/AddBlog";
+import AllBlog from "./components/AllBlog";
 
 const page = () => {
   return (
-    <div>
-     <AddBlog />
+    <div className="overflow-y-scroll ">
+      <AddBlog />
+      <AllBlog />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

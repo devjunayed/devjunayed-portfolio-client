@@ -26,6 +26,7 @@ export type TBlogData = {
   title: string;
   thumbnail: string;
   shortDescription: string;
+  isFeatured: boolean;
   description: string;
 }
 
