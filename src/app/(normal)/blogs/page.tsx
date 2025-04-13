@@ -32,7 +32,10 @@ const Page = () => {
       setBlogData((prev) => {
         const uniqueBlogs = [
           ...prev,
-          ...data.data.filter((blog: TBlogData) => !prev.some((prevBlog) => prevBlog._id === blog._id)),
+          ...data.data.filter(
+            (blog: TBlogData) =>
+              !prev.some((prevBlog) => prevBlog._id === blog._id)
+          ),
         ];
         return uniqueBlogs;
       });
@@ -75,14 +78,7 @@ const Page = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {blogData.map((blog) => (
-            <>
             <BlogCard key={blog._id} blog={blog} />
-            <BlogCard key={blog._id} blog={blog} />
-            <BlogCard key={blog._id} blog={blog} />
-            <BlogCard key={blog._id} blog={blog} />
-            <BlogCard key={blog._id} blog={blog} />
-            <BlogCard key={blog._id} blog={blog} />
-            </>
           ))}
         </div>
       </InfiniteScroll>

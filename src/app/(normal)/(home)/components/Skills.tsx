@@ -10,7 +10,7 @@ const Skills = async () => {
   const skillData = await response.json();
 
   return (
-    <>
+    <div className="mt-10">
       {skillData && skillData.data.length > 0 && (
         <div className="mx-6">
           <Heading title="skills" />
@@ -33,7 +33,7 @@ const Skills = async () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

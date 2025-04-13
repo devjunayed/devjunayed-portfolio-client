@@ -44,14 +44,14 @@ export function Hero() {
       />
       <Image
         src={ExpressImage}
-        className="absolute bottom-10 lg:bottom-32 w-12 right-48  bg-white rounded-full animate-smooth-bounce"
+        className="absolute bottom-2 lg:bottom-16 w-12 md:right-48 right-16  bg-white rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
       <Image
         src={NodeImage}
-        className="absolute bottom-10 lg:bottom-32 w-12 left-48  bg-none rounded-full animate-smooth-bounce"
+        className="absolute bottom-2 lg:bottom-16 w-12 md:left-48 left-16 bg-none rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}

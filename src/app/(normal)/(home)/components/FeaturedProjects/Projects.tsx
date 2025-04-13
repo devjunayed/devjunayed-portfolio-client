@@ -10,7 +10,7 @@ export function Projects() {
   const { data: projectData } = useGetFeaturedProjects();
 
   return (
-    <>
+    <div className="mt-10">
       {projectData && projectData?.length > 0 && (
         <div className="mx-6">
           <Heading title="featured projects" />
@@ -30,6 +30,6 @@ export function Projects() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

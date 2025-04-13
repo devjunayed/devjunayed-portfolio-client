@@ -50,7 +50,7 @@ const BlogDetail = async (props: BlogDetailProps) => {
           <p>Md Junayed</p>
         </div>
 
-        <div className="aspect-[16/9] mx-auto max-h-[400px] my-10  relative">
+        <div className="aspect-[25/9] mx-auto max-h-[700px] my-6  relative">
           <Image
             src={data.thumbnail}
             alt={data.title || "Blog Thumbnail"}

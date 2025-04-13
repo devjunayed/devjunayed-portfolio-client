@@ -21,7 +21,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
           </h2>
 
           {/* Tags */}
-          <div className="mt-4 flex gap-2">
+          <div className="md:mt-4 mt-2 flex flex-wrap gap-1 md:gap-2">
             {project.projectTags.map((tag, index) => (
               <Chip key={`tag${index}`}>{tag}</Chip>
             ))}
@@ -31,9 +31,9 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
             {project.projectShortDescription}
           </p>
 
-          <div className="mt-4 flex gap-1 items-center text-white">
+          <div className="md:mt-4 mt-2 flex md:gap-1 items-center text-white">
             <p>Used Tech :</p>
-            <div className="flex gap-1">
+            <div className="flex md:gap-1">
               {project.projectTechnologies.map((tech, index) => (
                 <Chip variant="shadow" color="secondary" key={`tech${index}`}>
                   {tech}

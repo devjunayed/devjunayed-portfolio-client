@@ -10,10 +10,11 @@ export default function ProjectsPage() {
   const { data: projectData } = useGetFeaturedProjects();
 
   return (
-    <>
+    <div className="max-w-6xl mx-auto min-h-screen mt-20">
       {projectData && projectData?.length > 0 && (
         <div className="mx-6">
-          <Heading title="projects" />
+          <Heading
+           title="all projects" />
           <div className="">
             <div className="flex flex-col gap-4 mt-4">
               {projectData?.map((project, index) => {
@@ -30,6 +31,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

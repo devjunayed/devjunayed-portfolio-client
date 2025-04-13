@@ -11,13 +11,13 @@ const FeaturedBlog = () => {
   const { data } = useGetFeaturedBlog();
 
   return (
-    <div className="mx-6">
-        <Heading title="Featured Blog" />
-      <div>
-        {data && data.length > 0 && (
+    <div className="mx-6 mt-10">
+      {data && data.length > 0 && (
+        <div>
+          <Heading title="Featured Blog" />
           <FeaturedBlogCard items={data} direction="left" speed="slow" />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
