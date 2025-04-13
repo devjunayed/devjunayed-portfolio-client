@@ -2,12 +2,12 @@ import React from "react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { TextGenerateEffect } from "../../../../../components/ui/text-generate-effect";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.png";
-import ReactImage from "@/assets/react.png";
-import NextjsImage from "@/assets/nextjs.png";
-import MongodbImage from "@/assets/mongodb.png";
+import ProfileImg from "@/assets/image.svg";
+import ReactImage from "@/assets/react.svg";
+import NextjsImage from "@/assets/nextjs.svg";
+import MongodbImage from "@/assets/mongodb.svg";
 import ExpressImage from "@/assets/express.svg";
-import NodeImage from "@/assets/nodejs.png";
+import NodeImage from "@/assets/nodejs.svg";
 import {
   CardBody,
   CardContainer,
