@@ -2,7 +2,7 @@ import Heading from "../../../../components/Shared/Heading";
 
 const Education = () => {
   return (
-    <div className="mx-6">
+    <div className="mx-6 mt-10">
       <Heading title="Education" />
       <div className="my-2  text-white">
         <h3 className="text-xl text-white">Sonargaon University</h3>
