@@ -10,7 +10,7 @@ const ResumeButton = () => {
     <div>
       <UiVerseButton
         onClick={() => setIsModalOpen(true)}
-        text="Download Resume"
+        text="My Resume"
         icon={<Download />}
       />
       <Modal

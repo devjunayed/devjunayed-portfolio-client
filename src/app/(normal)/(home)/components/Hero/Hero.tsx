@@ -14,6 +14,7 @@ import {
   CardItem,
 } from "../../../../../components/ui/3d-card";
 import ResumeButton from "./ResumeButton";
+import SocialIcon from "./SocialIcon";
 
 export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
@@ -44,14 +45,14 @@ export function Hero() {
       />
       <Image
         src={ExpressImage}
-        className="absolute bottom-2 lg:bottom-16 w-12 md:right-48 right-16  bg-white rounded-full animate-smooth-bounce"
+        className="absolute bottom-2 lg:bottom-16 w-12 md:right-48 sm:first-line:right-16 right-4  bg-white rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
       <Image
         src={NodeImage}
-        className="absolute bottom-2 lg:bottom-16 w-12 md:left-48 left-16 bg-none rounded-full animate-smooth-bounce"
+        className="absolute bottom-2 lg:bottom-16 w-12 md:left-48 sm:left-16 bg-none rounded-full animate-smooth-bounce left-4"
         alt="image"
         height={70}
         width={70}
@@ -73,7 +74,7 @@ export function Hero() {
         </CardContainer>
 
         <h1 className="text-white text-xl mt-4">Hi, I am Md Junayed</h1>
-        <TextGenerateEffect className="text-white" words={words} />
+        <TextGenerateEffect duration={1} className="text-white" words={words} />
 
         {/* <Link
           href={
@@ -84,6 +85,7 @@ export function Hero() {
         >
           Download Resume
         </Link> */}
+        <SocialIcon />
       <ResumeButton />
       </div>
     </BackgroundBeamsWithCollision>

@@ -15,7 +15,7 @@ const FeaturedBlog = () => {
       {data && data.length > 0 && (
         <div>
           <Heading title="Featured Blog" />
-          <FeaturedBlogCard items={data} direction="left" speed="slow" />
+          <FeaturedBlogCard  items={data} direction="left" speed="slow" />
         </div>
       )}
     </div>
