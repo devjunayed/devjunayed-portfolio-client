@@ -6,7 +6,7 @@ import ProfileImg from "@/assets/image.png";
 import ReactImage from "@/assets/react.png";
 import NextjsImage from "@/assets/nextjs.png";
 import MongodbImage from "@/assets/mongodb.png";
-import ExpressImage from "@/assets/express.webp";
+import ExpressImage from "@/assets/express.svg";
 import NodeImage from "@/assets/nodejs.png";
 import {
   CardBody,
