@@ -1,4 +1,4 @@
-import { createNewBlog, getAllBlog, getSingleBlog } from "@/services/BlogService";
+import { createNewBlog, getAllBlog, getFeaturedBlog, getSingleBlog } from "@/services/BlogService";
 import { TBlogData } from "@/types";
 import {  useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
@@ -40,5 +40,12 @@ export const useGetSingleBlog = (blogId: string) => {
   return useQuery<TBlogData[], Error, TBlogData[]>({
     queryKey: ["GET_SINGLE_BLOG"],
     queryFn: async () => await getSingleBlog(blogId),
+  });
+};
+
+export const useGetFeaturedBlog = () => {
+  return useQuery<unknown, Error, TBlogData[]>({
+    queryKey: ["GET_FEATURED_BLOG"],
+    queryFn: async () => await getFeaturedBlog(),
   });
 };

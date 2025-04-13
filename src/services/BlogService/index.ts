@@ -30,3 +30,11 @@ export const getSingleBlog = async(blogId: string) => {
         ThrowError(error)   
     }
 }
+export const getFeaturedBlog = async() => {
+    try {
+        const {data} = await axiosInstance.get(`${envConfig.baseApi}/blog/featured`);
+        return data.data;
+    } catch (error) {
+        ThrowError(error)   
+    }
+}
