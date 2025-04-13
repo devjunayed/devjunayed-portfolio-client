@@ -2,7 +2,7 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import envConfig from "@/config/envConfig";
 import Parse from "html-react-parser";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.png";
+import ProfileImg from "@/assets/image.svg";
 
 interface BlogDetailProps {
   params: Promise<{ blogId: string }>;

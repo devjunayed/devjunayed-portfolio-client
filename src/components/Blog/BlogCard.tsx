@@ -1,7 +1,7 @@
 import { TBlogData } from "@/types";
 import React from "react";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.png";
+import ProfileImg from "@/assets/image.svg";
 import UiVerseButton from "../ui/LinkButton/UiVerseButton";
 import { Eye } from "lucide-react";
 
