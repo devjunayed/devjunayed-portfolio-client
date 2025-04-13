@@ -13,7 +13,7 @@ const Skills = async () => {
     <div className="mt-10">
       {skillData && skillData.data.length > 0 && (
         <div className="mx-6">
-          <Heading title="skills" />
+          <Heading title="Skills" />
           <div className=" rounded-md flex flex-col antialiased  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
             <InfiniteMovingCards
               items={skillData?.data[0]?.skills}

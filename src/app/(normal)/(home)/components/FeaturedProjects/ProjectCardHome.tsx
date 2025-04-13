@@ -16,7 +16,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
         {/* Text Section */}
         <div className="w-full flex flex-col h-[400px] md:w-1/2 flex-grow">
           {/* Title */}
-          <h2 className="text-left text-lg md:text-xl lg:text-xl font-semibold tracking-[-0.015em] text-white">
+          <h2 className="text-left text-lg md:text-xl lg:text-xl font-semibold tracking-[-0.015em] text-white font-mono">
             {project.projectTitle}
           </h2>
 

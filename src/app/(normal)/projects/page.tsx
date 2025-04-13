@@ -5,6 +5,7 @@ import { useGetFeaturedProjects } from "@/hooks/project.hook";
 import Heading from "@/components/Shared/Heading";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import ProjectCardHome from "../(home)/components/FeaturedProjects/ProjectCardHome";
+import { TProjectData } from "@/types";
 
 export default function ProjectsPage() {
   const { data: projectData } = useGetFeaturedProjects();
@@ -17,7 +18,7 @@ export default function ProjectsPage() {
            title="all projects" />
           <div className="">
             <div className="flex flex-col gap-4 mt-4">
-              {projectData?.map((project, index) => {
+              {projectData?.map((project: TProjectData, index: React.Key | null | undefined) => {
                 return <ProjectCardHome project={project} key={index} />;
               })}
             </div>
