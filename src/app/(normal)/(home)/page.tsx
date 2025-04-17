@@ -11,14 +11,14 @@ import About from "./components/About";
 const page = () => {
   return (
     <div className="bg-slate-900 mt-20 ">
-      <TracingBeam className="min-h-screen">
-        <Hero />
-        <About />
-        <Education />
-        <Skills />
-        <Projects />
-        <FeaturedBlog />
-        <ContactUs />
+      <TracingBeam>
+          <Hero />
+          <About />
+          <Education />
+          <Skills />
+          <Projects />
+          <FeaturedBlog />
+          <ContactUs />
       </TracingBeam>
     </div>
   );

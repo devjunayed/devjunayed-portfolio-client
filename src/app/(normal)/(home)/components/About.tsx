@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="text-white about max-w-6xl mx-auto flex gap-4 ">
+    <div className="text-white about  max-w-6xl mx-auto flex gap-4 ">
       <div className="mx-6">
         <Heading title="About Me" />
         <div className="flex gap-4 items-center flex-col md:flex-row mt-4 w-full">

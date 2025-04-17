@@ -11,7 +11,7 @@ const FeaturedBlog = () => {
   const { data } = useGetFeaturedBlog();
 
   return (
-    <div className="mx-6 mt-10">
+    <div className="mx-6 mt-10 min-h-96">
       {data && data.length > 0 && (
         <div>
           <Heading title="Featured Blog" />

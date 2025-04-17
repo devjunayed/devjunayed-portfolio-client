@@ -11,7 +11,7 @@ export function Projects() {
   const { data: projectData } = useGetFeaturedProjects();
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 min-h-96">
       {projectData && projectData?.length > 0 && (
         <div className="mx-6">
           <Heading title="Featured Projects" />

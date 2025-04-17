@@ -22,7 +22,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="w-full flex justify-center  shadow-md shadow-gray-600 fixed z-50 bg-slate-900 mb-2">
+    <div className="w-full top-0 flex justify-center overflow-y-hidden  shadow-md shadow-gray-600 fixed z-50 bg-slate-900">
       <div className="flex justify-between w-full px-6 py-4 max-w-6xl ">
         <div className="navbar-start flex  ">
           <a

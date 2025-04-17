@@ -4,7 +4,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto min-h-96">
       <div className="mx-6">
 
       <Heading title="Contact Me" />

@@ -20,7 +20,7 @@ export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
 
   return (
-    <BackgroundBeamsWithCollision className="min-h-screen relative ">
+    <BackgroundBeamsWithCollision className="min-h-[100vh] relative ">
       <Image
         src={ReactImage}
         className="absolute top-32 left-0 md:left-16 w-12 animate-smooth-bounce"
