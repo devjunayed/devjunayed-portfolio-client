@@ -2,12 +2,7 @@ import React from "react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { TextGenerateEffect } from "../../../../../components/ui/text-generate-effect";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.svg";
-import ReactImage from "@/assets/react.svg";
-import NextjsImage from "@/assets/nextjs.svg";
-import MongodbImage from "@/assets/mongodb.svg";
-import ExpressImage from "@/assets/express.svg";
-import NodeImage from "@/assets/nodejs.svg";
+
 import {
   CardBody,
   CardContainer,
@@ -22,36 +17,36 @@ export function Hero() {
   return (
     <BackgroundBeamsWithCollision className="min-h-[100vh] relative ">
       <Image
-        src={ReactImage}
-        className="absolute top-32 left-0 md:left-16 w-12 animate-smooth-bounce"
+        src="https://skillicons.dev/icons?i=react"
+        className="absolute rounded-full top-32 left-0 md:left-16 w-12 animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
 
       <Image
-        src={MongodbImage}
-        className="absolute top-0 md:top-8 w-12  bg-white rounded-full animate-smooth-bounce"
+        src="https://skillicons.dev/icons?i=mongodb"
+        className="absolute  top-0 md:top-8 w-12   rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
       <Image
-        src={NextjsImage}
-        className="absolute top-32 right-0 w-12 md:right-16 bg-white rounded-full animate-smooth-bounce"
+        src="https://skillicons.dev/icons?i=nextjs"
+        className="absolute top-32 right-0 w-12 md:right-16  rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
       <Image
-        src={ExpressImage}
+        src="https://skillicons.dev/icons?i=express"
         className="absolute bottom-2 lg:bottom-16 w-12 md:right-48 sm:first-line:right-16 right-4  bg-white rounded-full animate-smooth-bounce"
         alt="image"
         height={70}
         width={70}
       />
       <Image
-        src={NodeImage}
+        src="https://skillicons.dev/icons?i=nodejs"
         className="absolute bottom-2 lg:bottom-16 w-12 md:left-48 sm:left-16 bg-none rounded-full animate-smooth-bounce left-4"
         alt="image"
         height={70}
@@ -63,7 +58,7 @@ export function Hero() {
           <CardBody className="relative group/card    w-auto  h-auto ">
             <CardItem translateZ="50" className="text-xl font-bold ">
               <Image
-                src={ProfileImg}
+                src="/images/image.png"
                 className="rounded-full  mx-auto  shadow-inner shadow-white"
                 alt="image"
                 height={200}
