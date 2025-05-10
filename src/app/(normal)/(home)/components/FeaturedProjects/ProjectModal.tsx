@@ -12,7 +12,7 @@ const ProjectModal = ({title, modalOpen, setIsModalOpen, children}: TProjectModa
   return (
       <Modal
               classNames={{ body: "black" }}
-              className="bg-transparent"
+              className="bg-transparent h-screen"
               title={title}
               width={{
                 xs: "95%",
@@ -22,12 +22,13 @@ const ProjectModal = ({title, modalOpen, setIsModalOpen, children}: TProjectModa
                 xl: "95%",
                 xxl: "95%",
               }}
-              style={{ backgroundColor: "transparent", top: 20 }}
+              style={{  backgroundColor: "transparent", top: 20 }}
               open={modalOpen}
               onOk={() => setIsModalOpen(false)}
               onCancel={() => setIsModalOpen(false)}
               footer={null}
             >
+                
               {children}
             </Modal>
   )

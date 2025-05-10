@@ -63,29 +63,58 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
               modalOpen={singleOpen}
               setIsModalOpen={setIsSingleOpen}
             >
-              <div className="w-full h-full overscroll-y-auto">
-                <Image
-                  className="w-full mx-auto h-full"
-                  alt=""
-                  src={project.projectThumbnail}
-                />
-              </div>
-              <div>
-                <div className="flex gap-4 items-center justify-center">
-                  <Link className="btn text-white " href={project.projectClientViewLink}>
+              <div className="h-[96vh] overflow-y-scroll">
+                <div className="w-full flex justify-center ">
+                  <Image
+                    className="w-full mx-auto "
+                    alt=""
+                    src={project.projectThumbnail}
+                  />
+                </div>
+                <div className="md:mt-4 mt-2 justify-center flex flex-wrap gap-1 md:gap-2">
+                  {project.projectTags.map((tag, index) => (
+                    <Chip className="bg-white" key={`tag${index}`}>{tag}</Chip>
+                  ))}
+                </div>
+                <div className="flex gap-4 my-6 items-center justify-center">
+                  <Link
+                    className="btn text-white "
+                    href={project.projectClientViewLink}
+                  >
                     <LinkIcon /> Live
                   </Link>
-                  <Link className="btn text-white " href={project.projectClientCodeLink}>
+                  <Link
+                    className="btn text-white "
+                    href={project.projectClientCodeLink}
+                  >
                     <IconBrandGithub /> Client Code
                   </Link>
-                  <Link className="btn text-white " href={project.projectServerCodeLink}>
+                  <Link
+                    className="btn text-white "
+                    href={project.projectServerCodeLink}
+                  >
                     <IconBrandGithub /> Server Code
                   </Link>
                 </div>
-              </div>
-              <div>
-                <h2 className="text-xl font-bold">Project Description</h2>
-                <p>{Parse(project.projectDescription)}</p>
+
+                <div>
+                  <h2 className="text-xl font-bold mb-4">Technologies used</h2>
+                  <div>
+                    {project.projectTechnologies.map((tech, index) => (
+                      <Image
+                        alt={tech}
+                        src={`https://skillicons.dev/icons?i=${tech}`}
+                        key={index}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-4">
+                    Project Description
+                  </h2>
+                  <p>{Parse(project.projectDescription)}</p>
+                </div>
               </div>
             </ProjectModal>
             <UiVerseButton
