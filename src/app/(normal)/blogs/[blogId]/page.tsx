@@ -2,7 +2,6 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import envConfig from "@/config/envConfig";
 import Parse from "html-react-parser";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.svg";
 
 interface BlogDetailProps {
   params: Promise<{ blogId: string }>;
@@ -41,7 +40,7 @@ const BlogDetail = async (props: BlogDetailProps) => {
 
         <div className="my-2 items-center gap-2 flex">
           <Image
-            src={ProfileImg}
+            src="/images/image.png"
             className="rounded-full shadow-inner shadow-white"
             alt="Author profile image"
             height={24}

@@ -1,7 +1,6 @@
 import { TBlogData } from "@/types";
 import React from "react";
 import Image from "next/image";
-import ProfileImg from "@/assets/image.svg";
 import UiVerseButton from "../ui/LinkButton/UiVerseButton";
 import { Eye } from "lucide-react";
 
@@ -14,7 +13,7 @@ const BlogCard = ({ blog }: { blog: TBlogData }) => {
       <div className="w-full  items-center justify-center">
         <div className=" items-center  gap-2 flex">
           <Image
-            src={ProfileImg}
+            src="/images/image.png"
             className="rounded-full    shadow-inner shadow-white"
             alt="image"
             height={30}
