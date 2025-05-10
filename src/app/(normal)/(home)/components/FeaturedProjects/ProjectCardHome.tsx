@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { TProjectData } from "@/types";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import { IconEye } from "@tabler/icons-react";
-import { InfoIcon } from "lucide-react";
-import { Modal } from "antd";
+import { IconBrandGithub, IconEye } from "@tabler/icons-react";
+import { InfoIcon, LinkIcon } from "lucide-react";
 import { Chip } from "@heroui/react";
+import ProjectModal from "./ProjectModal";
+import Parse from "html-react-parser";
+import { Image } from "antd";
+import Link from "next/link";
 
 const ProjectCardHome = ({ project }: { project: TProjectData }) => {
-  const [modalOpen, setIsModalOpen] = useState(false);
+  const [open, setIsOpen] = useState(false);
+  const [singleOpen, setIsSingleOpen] = useState(false);
   return (
     <WobbleCard containerClassName="border border-white bg-transparent w-full h-full flex flex-col">
       {/* Flex container for content */}
@@ -44,37 +48,54 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
           {/* Buttons at the bottom-left of the card */}
 
           <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">
-            <Modal
-              classNames={{ body: "black" }}
-              className="bg-transparent"
+            <ProjectModal
               title={project.projectTitle}
-              width={{
-                xs: "95%",
-                sm: "95%",
-                md: "95%",
-                lg: "95%",
-                xl: "95%",
-                xxl: "95%",
-              }}
-              style={{ backgroundColor: "transparent", top: 20 }}
-              open={modalOpen}
-              onOk={() => setIsModalOpen(false)}
-              onCancel={() => setIsModalOpen(false)}
-              footer={null}
+              modalOpen={open}
+              setIsModalOpen={setIsOpen}
             >
               <iframe
                 className="w-full min-h-[85vh]"
                 src={project.projectClientViewLink}
               ></iframe>
-            </Modal>
+            </ProjectModal>
+            <ProjectModal
+              title={project.projectTitle}
+              modalOpen={singleOpen}
+              setIsModalOpen={setIsSingleOpen}
+            >
+              <div className="w-full h-full overscroll-y-auto">
+                <Image
+                  className="w-full mx-auto h-full"
+                  alt=""
+                  src={project.projectThumbnail}
+                />
+              </div>
+              <div>
+                <div className="flex gap-4 items-center justify-center">
+                  <Link className="btn text-white " href={project.projectClientViewLink}>
+                    <LinkIcon /> Live
+                  </Link>
+                  <Link className="btn text-white " href={project.projectClientCodeLink}>
+                    <IconBrandGithub /> Client Code
+                  </Link>
+                  <Link className="btn text-white " href={project.projectServerCodeLink}>
+                    <IconBrandGithub /> Server Code
+                  </Link>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-xl font-bold">Project Description</h2>
+                <p>{Parse(project.projectDescription)}</p>
+              </div>
+            </ProjectModal>
             <UiVerseButton
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsOpen(true)}
               icon={<IconEye />}
               text="Preview"
             />
             <UiVerseButton
+              onClick={() => setIsSingleOpen(true)}
               icon={<InfoIcon />}
-              href={`/projects/${project._id}`}
               text="Details"
             />
           </div>

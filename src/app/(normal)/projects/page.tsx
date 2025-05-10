@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       {projectData && projectData?.length > 0 && (
         <div className="mx-6">
           <Heading
-           title="all projects" />
+           title="All Projects" />
           <div className="">
             <div className="flex flex-col gap-4 mt-4">
               {projectData?.map((project: TProjectData, index: React.Key | null | undefined) => {
