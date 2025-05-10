@@ -11,8 +11,10 @@ export function Projects() {
   const { data: projectData } = useGetFeaturedProjects();
 
   return (
-    <div className="mt-10 min-h-96">
-      {projectData && projectData?.length > 0 && (
+    <div>
+   
+    {projectData && projectData?.length > 0 && (
+        <div className="mt-10 min-h-96">
         <div className="mx-6">
           <Heading title="Featured Projects" />
           <div className="">
@@ -30,7 +32,9 @@ export function Projects() {
             </div>
           </div>
         </div>
+        </div>
       )}
+         
     </div>
   );
 }
