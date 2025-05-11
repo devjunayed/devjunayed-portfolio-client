@@ -2,10 +2,10 @@
 import FileUpload from "@/components/ui/FileUpload/file-upload";
 import { useCreateProject } from "@/hooks/project.hook";
 import { TProjectData } from "@/types";
-import { tags } from "@/utils/tags";
+import { tags } from "@/data/tags";
 import React, { useState } from "react";
 import SelectableSearch from "./SelectableSearch";
-import { technologies } from "@/utils/technologies";
+import { technologies } from "@/data/technologies";
 
 interface TRightSide {
   formData: TProjectData;

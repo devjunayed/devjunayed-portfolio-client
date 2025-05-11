@@ -1,19 +1,19 @@
 import { TProjectData } from "@/types";
 import { IconBrandGithub } from "@tabler/icons-react";
-import { Image } from "antd";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import Parse from 'html-react-parser'
+import Parse from "html-react-parser";
 import { Chip } from "@heroui/react";
+import Image from "next/image";
 
-interface TProjectDetails{
-    project: TProjectData
+interface TProjectDetails {
+  project: TProjectData;
 }
 
-const ProjectDetails = ({project}: TProjectDetails) => {
+const ProjectDetails = ({ project }: TProjectDetails) => {
   return (
-    <div className="h-[96vh] overflow-y-scroll">
+    <div className="h-[86vh] overflow-y-scroll">
       <div
         className={`w-full bg-cover bg-top  relative h-[200px] md:h-[470px] transition-all   hover:bg-bottom linear  bg-image-scroll`}
         style={{
@@ -39,20 +39,18 @@ const ProjectDetails = ({project}: TProjectDetails) => {
         </Link>
       </div>
 
-      <div>
+      <div className="mb-4">
         <h2 className="text-xl font-bold mb-4">Technologies used</h2>
         <div>
-          {project.projectTechnologies.map((tech, index) => {
-            return (
-              <Image
-                alt={tech}
-                width={70}
-                height={70}
-                src={`https://skillicons.dev/icons?i=react}`}
-                key={index}
-              />
-            );
-          })}
+          {project.projectTechnologies.map((tech, index) => (
+            <Image
+              alt={tech}
+              width={50}
+              height={50}
+              src={`https://skillicons.dev/icons?i=react`}
+              key={index}
+            />
+          ))}
         </div>
       </div>
       <div>

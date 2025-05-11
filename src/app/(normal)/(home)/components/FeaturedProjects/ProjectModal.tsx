@@ -12,7 +12,7 @@ const ProjectModal = ({title, modalOpen, setIsModalOpen, children}: TProjectModa
   return (
       <Modal
               classNames={{ body: "black" }}
-              className="bg-transparent h-screen"
+              className="bg-transparent h-[90vh]"
               title={title}
               width={{
                 xs: "95%",

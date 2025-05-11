@@ -9,7 +9,7 @@ import {
   CardItem,
 } from "../../../../../components/ui/3d-card";
 import ResumeButton from "./ResumeButton";
-import SocialIcon from "./SocialIcon";
+import SocialIcons from "./SocialIcon";
 
 export function Hero() {
   const words = `"I am a MERN stack web developer with a B.Sc. in Computer Science and Engineering. I specialize in building dynamic, user-friendly web applications and am actively seeking opportunities to grow and contribute to impactful projects."`;
@@ -80,7 +80,7 @@ export function Hero() {
         >
           Download Resume
         </Link> */}
-        <SocialIcon />
+        <SocialIcons />
       <ResumeButton />
       </div>
     </BackgroundBeamsWithCollision>

@@ -3,7 +3,7 @@ import Loading from "@/components/Shared/Loading";
 import { SidebarWrapper } from "@/components/ui/sidebar-wrapper";
 
 import { useUser } from "@/context/user.provider";
-import { creatorLinks } from "@/utils/creator.links";
+import { creatorLinks } from "@/data/creator.links";
 
 
 import React, { ReactNode, useEffect, useState } from "react";

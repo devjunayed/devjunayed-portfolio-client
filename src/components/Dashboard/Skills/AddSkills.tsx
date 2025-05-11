@@ -8,7 +8,7 @@ import {
 } from "../../ui/animated-modal";
 import { Plus } from "lucide-react";
 import { useCreateSkill } from "@/hooks/skill.hook";
-import { backendIcons, frontendIcons, toolsIcons } from "@/utils/skills.icon";
+import { backendIcons, frontendIcons, toolsIcons } from "@/data/skills.icon";
 
 const AddSkills = () => {
   const [formData, setFormData] = useState({
