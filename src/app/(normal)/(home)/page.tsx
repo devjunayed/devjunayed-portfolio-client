@@ -7,6 +7,7 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import FeaturedBlog from "./components/FeaturedBlog/FeaturedBlog";
 import { Projects } from "./components/FeaturedProjects/Projects";
 import About from "./components/About";
+import Footer from "./components/Footer";
 
 const page = () => {
   return (
@@ -19,6 +20,7 @@ const page = () => {
           <Projects />
           <FeaturedBlog />
           <ContactUs />
+          <Footer />
       </TracingBeam>
     </div>
   );

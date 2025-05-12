@@ -1,11 +1,31 @@
 "use client";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 import { Download } from "lucide-react";
 import React, { useState } from "react";
 
 const ResumeButton = () => {
   const [modalOpen, setIsModalOpen] = useState(false);
+
+  const resumeOriginalUrl =
+    "https://drive.google.com/file/d/1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR/view?usp=sharing";
+  const resumeUrl =
+    "https://drive.google.com/file/d/1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR/preview";
+  const downloadUrl =
+    "https://drive.usercontent.google.com/u/0/uc?id=1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR&export=download";
+
+  const onDownload = () => {
+    window.location.href = downloadUrl;
+  };
+
+  const onCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onOpenInNewTab = () => {
+    window.open(resumeOriginalUrl, "_blank");
+  };
+
   return (
     <div>
       <UiVerseButton
@@ -26,16 +46,23 @@ const ResumeButton = () => {
         }}
         style={{ backgroundColor: "transparent", top: 20 }}
         open={modalOpen}
-        onOk={() =>
-          (window.location.href =
-            "https://drive.usercontent.google.com/u/0/uc?id=1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR&export=download")
-        }
-        onCancel={() => setIsModalOpen(false)}
-        okText="Download"
+        onCancel={onCancel}
+        footer={[
+          <Button key="open" onClick={onOpenInNewTab}>
+            Open in New Tab
+          </Button>,
+          <Button key="download" type="primary" onClick={onDownload}>
+            Download
+          </Button>,
+          <Button key="close" onClick={onCancel}>
+            Close
+          </Button>,
+        ]}
       >
         <iframe
-          className="w-full min-h-[80vh]"
-          src={`https://drive.google.com/file/d/1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR/preview`}
+          className="w-full min-h-[76vh]"
+          src={resumeUrl}
+          allow="autoplay"
         ></iframe>
       </Modal>
     </div>

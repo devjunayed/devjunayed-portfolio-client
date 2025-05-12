@@ -13,7 +13,7 @@ const ProjectCardHome = ({ project }: { project: TProjectData }) => {
 
         {/* Image Section */}
         <div
-          className={`w-full bg-cover bg-top  md:w-1/2 relative h-[200px] md:h-[300px] transition-all   hover:bg-bottom linear  bg-image-scroll`}
+          className={`w-full bg-cover bg-top  md:w-1/2 relative h-full md:h-[300px] transition-all   hover:bg-bottom linear  bg-image-scroll`}
           style={{
             backgroundImage: `url(${project.projectThumbnail})`,
           }}

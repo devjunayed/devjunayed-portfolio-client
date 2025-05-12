@@ -7,19 +7,31 @@ const About = () => {
       <div className="mx-6">
         <Heading title="About Me" />
         <div className="flex gap-4 items-center flex-col md:flex-row mt-4 w-full">
-          <div className="w-full md:w-1/2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quae
-            velit assumenda consequatur cupiditate nulla hic harum fugiat eaque,
-            atque quisquam tempora maiores illo neque reprehenderit, similique
-            qui aliquam nostrum. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Explicabo ex natus, sequi vel quaerat nesciunt!
-            Praesentium ea qui repellendus possimus voluptates perspiciatis,
-            tempora rem a sapiente maxime. Iusto, voluptates recusandae.
+          <div className="w-full space-y-6 md:w-1/2">
+            <p>
+              I&rsquo;m a MERN stack developer with a BSc in Computer Science
+              and Engineering. I love building scalable web apps using React,
+              Next.js, Node.js, MongoDB, Redux, and TypeScript.
+            </p>
+            <p>
+              I&rsquo;ve built projects like TradeHub (eCommerce with SSLCommerz) and Sportyfy
+              (sports facility booking with AmarPay). I focus on writing clean,
+              maintainable code.
+            </p>
+            <p>
+              Currently, I&rsquo;m improving my DSA skills with Striver&rsquo;s
+              course, learning German (A1&ndash;B1), and boosting my typing
+              speed to 100+ WPM.
+            </p>
+            <p>
+              I&rsquo;m looking for a developer role where I can learn, grow,
+              and contribute to meaningful projects.
+            </p>
           </div>
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:h-[350px] md:w-1/2">
             <iframe
-              width="560"
-              height="315"
+              width="100%"
+              height="100%"
               src="https://www.youtube.com/embed/iBOQDIdyQV4?si=G839HI4t1dU5Vrad"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
