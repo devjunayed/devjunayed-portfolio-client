@@ -1,10 +1,14 @@
 "use client";
 import Heading from "@/components/Shared/Heading";
+import validate from "@/utils/validate";
+import MessageSchema from "@/validation/message.validation";
 import { Form } from "antd";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const ContactUs = () => {
   const [data, setData] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -16,10 +20,46 @@ const ContactUs = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
+
     e.preventDefault();
-    // Here you can handle the form submission, e.g., send data to an API
-    console.log("Form submitted:", data);
+    
+    setLoading(true);
+
+    const { valid, errors } = validate(data, MessageSchema);
+
+    if (!valid) {
+      setLoading(false);
+      errors?.forEach((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+        });
+      });
+      return;
+    }
+
+    const response = await fetch(process.env.NEXT_PUBLIC_BASE_API + "/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    const responseData = await response.json();
+
+    setLoading(false);
+
+    if(responseData.success) {
+      toast.success(responseData.message, {
+        position: "top-center"
+      });
+    } else {
+      toast.error(responseData.message, {
+        position: "top-center"
+      });
+    }
+
     // Reset form fields
     setData({ name: "", email: "", message: "" });
   };
@@ -63,8 +103,9 @@ const ContactUs = () => {
               <button
                 onClick={handleSubmit}
                 className="text-white border-2 p-3 rounded-md"
+                disabled={loading}
               >
-                Send
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </div>
           </Form>
