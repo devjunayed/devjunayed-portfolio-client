@@ -53,6 +53,7 @@ export const getCurrentUser = async () => {
     }
     return decodedToken;
   } catch (error: any) {
+   
     ThrowError(error);
   }
 };
@@ -86,6 +87,7 @@ export const getNewAccessToken = async () => {
       },
     });
 
+    console.log("Access Token Refreshed");
     return res.data;
   } catch (error: any) {
 
