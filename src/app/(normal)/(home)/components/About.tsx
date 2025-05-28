@@ -32,10 +32,11 @@ const About = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/iBOQDIdyQV4?si=G839HI4t1dU5Vrad"
+              src="https://www.youtube.com/embed/8RQdmj7hqd8?si=eVUCwwa3iAUnD-uP"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             ></iframe>
+          
           </div>
         </div>
       </div>
