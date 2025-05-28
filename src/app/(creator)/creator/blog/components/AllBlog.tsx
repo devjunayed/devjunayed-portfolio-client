@@ -9,6 +9,11 @@ const AllBlog = () => {
       {blogData?.map((blog, index) => (
         <BlogCard key={index} blog={blog} />
       ))}
+      <div className="flex h-full items-center justify-center">
+        {blogData?.length === 0 && (
+          <p className="text-white text-xl ">No blogs found</p>
+        )}
+      </div>
     </div>
   );
 };

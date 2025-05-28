@@ -52,3 +52,4 @@ export const useGetFeaturedProjects = () => {
     queryFn: async () => await getFeaturedProjects(),
   });
 };
+

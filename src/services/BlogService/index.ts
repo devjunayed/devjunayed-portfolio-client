@@ -38,3 +38,11 @@ export const getFeaturedBlog = async() => {
         ThrowError(error)   
     }
 }
+export const deleteBlog = async(id: string) => {
+    try {
+        const {data} = await axiosInstance.delete(`${envConfig.baseApi}/blog/${id}`);
+        return data.data;
+    } catch (error) {
+        ThrowError(error)   
+    }
+}
