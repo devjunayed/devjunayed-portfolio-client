@@ -16,6 +16,7 @@ interface TLeftSide{
 }
 
 const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
+  console.log(formData)
   return (
     <div className="w-9/12 border-r-2 pr-8 border-white">
       <div className="space-y-3 flex flex-col ">
@@ -24,6 +25,8 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
         <Input
           name="projectTitle"
           value={formData.projectTitle}
+          defaultValue={formData.projectTitle}
+
           onChange={handleInputChange}
           labelPlacement="outside"
           placeholder="Project Title"

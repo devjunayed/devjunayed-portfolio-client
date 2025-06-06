@@ -14,6 +14,8 @@ const Projects = () => {
   return (
     <div className="overflow-y-scroll ">
       <ProjectForm
+        btnText="Add project"
+        title="Add Project"
         triggerButton={
           <div className="btn text-white rounded-2xl bg-transparent border border-white">
             <Plus /> Add Project

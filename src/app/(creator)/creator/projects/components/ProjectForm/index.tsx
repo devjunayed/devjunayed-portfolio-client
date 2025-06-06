@@ -27,12 +27,16 @@ export const initialFormData = {
 
 const ProjectForm = ({
   initialValue,
+  title,
+  btnText,
   modalOpen,
   setIsOpen,
   triggerButton,
   onSubmit,
 }: {
   initialValue?: any;
+  title: string;
+  btnText: string;
   modalOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>,
   triggerButton: React.ReactNode,
@@ -58,7 +62,7 @@ const ProjectForm = ({
           <ModalTrigger>
             {triggerButton}
           </ModalTrigger>
-          <ModalBody modalTitle="Add Project">
+          <ModalBody modalTitle={title}>
             <ModalContent className="bg-slate-900 overflow-y-scroll">
               <div className="flex  justify-between gap-8 w-full">
                 {/* Left side */}
@@ -70,6 +74,7 @@ const ProjectForm = ({
 
                 {/* Right Side */}
                 <RightSide
+                  btnText={btnText}
                   onSubmit={onSubmit}
                   initialData={initialData}
                   formData={formData}

@@ -30,9 +30,12 @@ export function ProjectCard({
           backgroundImage: `url(${project?.projectThumbnail})`,
         }}
       >
-        <div className="group-hover:flex z-30 hidden text-white absolute right-2 top-2 gap-2 ">
+        <div className="group-hover:flex z-30 hidden text-white absolute right-2 top-2 gap-1 ">
           <ProjectForm 
-            triggerButton={<Edit />}
+            initialValue={project}
+            btnText="Update Project"
+            title="Update project"
+            triggerButton={<Edit color="white" />}
             modalOpen={modalOpen}
             setIsOpen={setIsModalOpen}
             onSubmit={(data, id) => handleUpdate({data, id: id as string})}

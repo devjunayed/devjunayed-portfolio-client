@@ -7,6 +7,7 @@ import SelectableSearch from "./SelectableSearch";
 import { technologies } from "@/data/technologies";
 
 interface TRightSide {
+  btnText: string;
   formData: TProjectData;
   setFormData: React.Dispatch<React.SetStateAction<TProjectData>>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +19,7 @@ const RightSide = ({
   formData,
   setFormData,
   setIsOpen,
+  btnText,
   initialData,
   onSubmit,
 }: TRightSide) => {
@@ -52,6 +54,7 @@ const RightSide = ({
     <div className="flex  gap-2 flex-col w-3/12">
       <div className="text-center mx-auto mb-4  ">
         <FileUpload
+          initialFileUrls={[initialData.projectThumbnail]}
           maxUpload={1}
           resetKey={resetKey}
           imgbbUrl={`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`}
@@ -99,7 +102,7 @@ const RightSide = ({
           className="btn bg-slate-900 rounded2xl  border border-white  w-28"
           onClick={handleSubmit}
         >
-          Add Project
+          {btnText}
         </button>
       </div>
     </div>
