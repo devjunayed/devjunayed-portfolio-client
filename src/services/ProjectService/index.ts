@@ -15,6 +15,18 @@ export const createProject = async (projectData: TProjectData) => {
   }
 };
 
+
+// Function to create a new project
+export const updateProject = async (projectData: TProjectData, id: string) => {
+  try {
+    console.log(projectData);
+    const { data } = await axiosInstance.patch(`/project/:${id}`, projectData);
+    return data; // Return the response from the server
+  } catch (error) {
+    ThrowError(error); // Handle the error using your utility function
+  }
+};
+
 // Function to fetch all projects
 export const getAllProjects = async () => {
   try {

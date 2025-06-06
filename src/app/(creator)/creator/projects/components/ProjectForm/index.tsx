@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalTrigger,
 } from "@/components/ui/animated-modal";
-import { Plus } from "lucide-react";
 import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
+import { TProjectData } from "@/types";
 
 export const initialFormData = {
   projectTitle: "",
@@ -24,10 +25,22 @@ export const initialFormData = {
   projectTechnologies: [] as string[],
 };
 
-const AddProjects = () => {
-  const [modalOpen, setIsModalOpen] = useState(false);
+const ProjectForm = ({
+  initialValue,
+  modalOpen,
+  setIsOpen,
+  triggerButton,
+  onSubmit,
+}: {
+  initialValue?: any;
+  modalOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>,
+  triggerButton: React.ReactNode,
+  onSubmit: (data: TProjectData , id?: string) => void;
+}) => {
+  const initialData = initialValue || initialFormData;
 
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(initialData);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -35,15 +48,15 @@ const AddProjects = () => {
     >
   ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
   return (
     <>
       <div className="flex justify-end text-white">
-        <Modal open={modalOpen} setIsOpen={setIsModalOpen}>
-          <ModalTrigger className="btn text-white rounded-2xl bg-transparent border border-white">
-            <Plus /> Add Projects
+        <Modal open={modalOpen} setIsOpen={setIsOpen}>
+          <ModalTrigger>
+            {triggerButton}
           </ModalTrigger>
           <ModalBody modalTitle="Add Project">
             <ModalContent className="bg-slate-900 overflow-y-scroll">
@@ -57,9 +70,11 @@ const AddProjects = () => {
 
                 {/* Right Side */}
                 <RightSide
-                  initialFormData={initialFormData}
+                  onSubmit={onSubmit}
+                  initialData={initialData}
                   formData={formData}
                   setFormData={setFormData}
+                  setIsOpen={setIsOpen}
                 />
               </div>
             </ModalContent>
@@ -70,4 +85,4 @@ const AddProjects = () => {
   );
 };
 
-export default AddProjects;
+export default ProjectForm;

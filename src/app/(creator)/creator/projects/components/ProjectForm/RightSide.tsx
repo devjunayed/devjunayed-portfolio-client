@@ -1,6 +1,5 @@
 "use client";
 import FileUpload from "@/components/ui/FileUpload/file-upload";
-import { useCreateProject } from "@/hooks/project.hook";
 import { TProjectData } from "@/types";
 import { tags } from "@/data/tags";
 import React, { useState } from "react";
@@ -10,23 +9,34 @@ import { technologies } from "@/data/technologies";
 interface TRightSide {
   formData: TProjectData;
   setFormData: React.Dispatch<React.SetStateAction<TProjectData>>;
-  initialFormData: TProjectData;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSubmit: (data: TProjectData , id?: string ) => void;
+  initialData: TProjectData;
 }
 
-const RightSide = ({ formData, setFormData, initialFormData }: TRightSide) => {
+const RightSide = ({
+  formData,
+  setFormData,
+  setIsOpen,
+  initialData,
+  onSubmit,
+}: TRightSide) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
 
-  const { mutate: handleCreateProject } = useCreateProject();
   const resetForm = () => {
-    setFormData(initialFormData);
+    setFormData(initialData);
   };
 
   const handleSubmit = () => {
-    console.log(formData);
-    handleCreateProject(formData);
+    if (initialData._id) {
+      onSubmit(formData, initialData._id);
+    } else {
+      onSubmit(formData);
+    }
     resetForm();
     setResetKey(`${Date.now().toString()}`);
+    setIsOpen(false)
   };
 
   const handleFileUpload = (imageUrls: string[]) => {

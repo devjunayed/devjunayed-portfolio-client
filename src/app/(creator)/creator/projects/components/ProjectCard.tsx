@@ -2,6 +2,9 @@
 import { TProjectData } from "@/types";
 import { cn } from "@/utils/utils";
 import {  DeleteIcon, Edit } from "lucide-react";
+import ProjectForm from "./ProjectForm";
+import { useState } from "react";
+import { useUpdateProject } from "@/hooks/project.hook";
 
 export function ProjectCard({
   project,
@@ -9,6 +12,11 @@ export function ProjectCard({
   key: number;
   project: TProjectData;
 }) {
+
+  const [modalOpen, setIsModalOpen] = useState(false);
+
+  const {mutate: handleUpdate} =  useUpdateProject();
+
   return (
     <div className="max-w-xs w-full group/card">
       {/* utility */}
@@ -23,7 +31,12 @@ export function ProjectCard({
         }}
       >
         <div className="group-hover:flex z-30 hidden text-white absolute right-2 top-2 gap-2 ">
-          <button><Edit /></button>
+          <ProjectForm 
+            triggerButton={<Edit />}
+            modalOpen={modalOpen}
+            setIsOpen={setIsModalOpen}
+            onSubmit={(data, id) => handleUpdate({data, id: id as string})}
+          />  
           <button><DeleteIcon /></button>
         </div>
         <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
