@@ -24,20 +24,21 @@ const RightSide = ({
   onSubmit,
 }: TRightSide) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
-
+  
+  
   const resetForm = () => {
     setFormData(initialData);
   };
+  const [resetKey, setResetKey] = useState(`${Date.now().toString()}`);
 
   const handleSubmit = () => {
     if (initialData._id) {
       onSubmit(formData, initialData._id);
     } else {
       onSubmit(formData);
+      resetForm();
+      setResetKey(`${Date.now().toString()}`);
     }
-    resetForm();
-    setResetKey(`${Date.now().toString()}`);
     setIsOpen(false)
   };
 
@@ -54,7 +55,7 @@ const RightSide = ({
     <div className="flex  gap-2 flex-col w-3/12">
       <div className="text-center mx-auto mb-4  ">
         <FileUpload
-          initialFileUrls={[initialData.projectThumbnail]}
+          initialFileUrls={formData.projectThumbnail ? [formData.projectThumbnail] : ["https://i.ibb.co/KS8tH5Y/bg-removebg-preview.png"]}
           maxUpload={1}
           resetKey={resetKey}
           imgbbUrl={`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`}
