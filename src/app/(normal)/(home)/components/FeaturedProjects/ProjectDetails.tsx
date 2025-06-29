@@ -6,13 +6,14 @@ import React from "react";
 import Parse from "html-react-parser";
 import { Chip } from "@heroui/react";
 import Image from "next/image";
+import { Tooltip } from "antd";
 
 interface TProjectDetails {
   project: TProjectData;
 }
 
 const ProjectDetails = ({ project }: TProjectDetails) => {
-  console.log(project)
+  console.log(project);
   return (
     <div className="h-[86vh] overflow-y-scroll">
       <div
@@ -44,14 +45,9 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
         <h2 className="text-xl font-bold mb-4">Technologies used</h2>
         <div className="flex gap-2">
           {project.projectTechnologies.map((tech, index) => (
-            
-            <Image
-              alt={tech.title}
-              width={50}
-              height={50}
-              src={tech.icon}
-              key={index}
-            />
+            <Tooltip key={index} title={tech.title}>
+              <Image alt={tech.title} width={50} height={50} src={tech.icon} />
+            </Tooltip>
           ))}
         </div>
       </div>
