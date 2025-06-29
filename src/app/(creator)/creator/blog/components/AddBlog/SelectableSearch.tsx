@@ -27,10 +27,10 @@ const SelectableSearch = ({
     item.title.toLowerCase().includes(searchItem.toLowerCase())
   );
 
-  const handleTagsChange = (field: string) => {
+  const handleTagsChange = (field: AnyObject) => {
     setFormData((prev: TProjectData) => {
       const updatedField = [
-        ...new Set([...(prev[refinedFieldName] as string[]), field]),
+        ...new Set([...(prev[refinedFieldName] as AnyObject[]), field]),
       ];
       return {
         ...prev,
@@ -41,9 +41,9 @@ const SelectableSearch = ({
     setSearchItem("")
   };
 
-  const handleTagRemove = (field: string) => {
-    const updatedField = (formData[refinedFieldName] as string[]).filter(
-      (t: string) => t !== field
+  const handleTagRemove = (field: AnyObject) => {
+    const updatedField = (formData[refinedFieldName] as AnyObject[]).filter(
+      (t: AnyObject) => t !== field
     );
     setFormData((prev: TProjectData) => ({
       ...prev,
@@ -82,15 +82,15 @@ const SelectableSearch = ({
       )}
 
       <div className="flex flex-wrap gap-2 mt-2">
-        {(formData[refinedFieldName] as string[]).map(
-          (field: string, index: number) => (
+        {(formData[refinedFieldName] as AnyObject[]).map(
+          (field: AnyObject, index: number) => (
             <span
               className="border rounded-full px-2 p-1 flex gap-2"
               key={index}
             >
-              {field}{" "}
+              {field.title}{" "}
               <span
-                onClick={() => handleTagRemove(field as string)}
+                onClick={() => handleTagRemove(field as AnyObject)}
                 className="cursor-pointer"
               >
                 <IconCancel />
