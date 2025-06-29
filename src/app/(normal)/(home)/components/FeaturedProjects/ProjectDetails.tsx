@@ -24,7 +24,7 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
       <div className="md:mt-4 mt-2 justify-center flex flex-wrap gap-1 md:gap-2">
         {project.projectTags.map((tag, index) => (
           <Chip className="bg-white" key={`tag${index}`}>
-            {tag}
+            {tag.title}
           </Chip>
         ))}
       </div>
@@ -44,6 +44,7 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
         <h2 className="text-xl font-bold mb-4">Technologies used</h2>
         <div className="flex gap-2">
           {project.projectTechnologies.map((tech, index) => (
+            
             <Image
               alt={tech.title}
               width={50}

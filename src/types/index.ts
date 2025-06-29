@@ -36,6 +36,10 @@ export type TProjectTechnology = {
   title: string;
   icon: string;
 }
+export type TProjectTag = {
+  id?: number;
+  title: string;
+}
 
 export type  TProjectData = {
   _id?: string;
@@ -47,7 +51,7 @@ export type  TProjectData = {
   projectServerCodeLink: string;
   projectDescription: string;
   projectShortDescription: string;
-  projectTags: string[];
+  projectTags: TProjectTag[];
   isFeatured: boolean;
   projectTechnologies: TProjectTechnology[];
 }

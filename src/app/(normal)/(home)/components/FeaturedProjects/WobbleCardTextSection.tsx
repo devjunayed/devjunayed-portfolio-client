@@ -1,7 +1,7 @@
 import { Chip } from "@heroui/react";
 import ProjectModal from "./ProjectModal";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import { TProjectData } from "@/types";
+import { TProjectData, TProjectTag } from "@/types";
 import ProjectDetails from "./ProjectDetails";
 import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
@@ -23,8 +23,8 @@ const WobbleCardTextSection = ({ project }: TWobbleCardTextSection) => {
 
       {/* Tags */}
       <div className="md:mt-4 mt-2 flex flex-wrap gap-1 md:gap-2">
-        {project.projectTags.map((tag, index) => (
-          <Chip key={`tag${index}`}>{tag}</Chip>
+        {project.projectTags.map((tag: TProjectTag, index) => (
+          <Chip key={`tag${index}`}>{tag.title}</Chip>
         ))}
       </div>
       {/* Description */}
