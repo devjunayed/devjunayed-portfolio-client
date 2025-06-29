@@ -31,6 +31,12 @@ export type TBlogData = {
 }
 
 // types.ts
+export type TProjectTechnology = {
+  id?: number;
+  title: string;
+  icon: string;
+}
+
 export type  TProjectData = {
   _id?: string;
   projectTitle: string;
@@ -43,5 +49,5 @@ export type  TProjectData = {
   projectShortDescription: string;
   projectTags: string[];
   isFeatured: boolean;
-  projectTechnologies: string[];
+  projectTechnologies: TProjectTechnology[];
 }

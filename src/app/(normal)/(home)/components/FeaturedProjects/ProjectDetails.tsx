@@ -12,6 +12,7 @@ interface TProjectDetails {
 }
 
 const ProjectDetails = ({ project }: TProjectDetails) => {
+  console.log(project)
   return (
     <div className="h-[86vh] overflow-y-scroll">
       <div
@@ -41,13 +42,13 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
 
       <div className="mb-4">
         <h2 className="text-xl font-bold mb-4">Technologies used</h2>
-        <div>
+        <div className="flex gap-2">
           {project.projectTechnologies.map((tech, index) => (
             <Image
-              alt={tech}
+              alt={tech.title}
               width={50}
               height={50}
-              src={`https://skillicons.dev/icons?i=react`}
+              src={tech.icon}
               key={index}
             />
           ))}

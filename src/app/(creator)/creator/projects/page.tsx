@@ -6,10 +6,15 @@ import ProjectForm from "./components/ProjectForm";
 import { useState } from "react";
 import { useCreateProject } from "@/hooks/project.hook";
 import { Plus } from "lucide-react";
+import { TProjectData } from "@/types";
 
 const Projects = () => {
   const [modalOpen, setIsModalOpen] = useState(false);
   const { mutate: handleCreateProject } = useCreateProject();
+
+  const handleProjectSubmit = (data: TProjectData) => {
+    handleCreateProject(data);
+  };
 
   return (
     <div className="overflow-y-scroll ">
@@ -22,7 +27,7 @@ const Projects = () => {
           </div>
         }
         modalOpen={modalOpen}
-        onSubmit={(data) => handleCreateProject(data)}
+        onSubmit={(data) => handleProjectSubmit(data)}
         setIsOpen={setIsModalOpen}
       />
       <AllProjects />
