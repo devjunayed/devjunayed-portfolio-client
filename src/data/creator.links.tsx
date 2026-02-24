@@ -1,5 +1,6 @@
 import {
   IconBrandTabler,
+  IconCertificate,
   IconSettings,
 } from "@tabler/icons-react";
 import {  FileTextIcon, Folder, Star } from "lucide-react";
@@ -27,10 +28,16 @@ export const creatorLinks = [
     href: "creator/projects"
     
   },
+  {
+    label: "Certifications",
+    icon: <IconCertificate className="text-white h-5 w-5" />,
+    href: "creator/certifications"
+    
+  },
 
   {
     label: "Settings",
-    href: "settings",
+    href: "creator/settings",
     icon: <IconSettings className="text-white h-5 w-5" />,
   },
 ];
