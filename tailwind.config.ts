@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
-import { heroui } from "@heroui/react";
 
 const config = {
   // darkMode: ["class"],
@@ -105,7 +104,6 @@ const config = {
   plugins: [
     addVariablesForColors,
     require("tailwindcss-animate"),
-    heroui(),
     require("daisyui"),
   ],
 } satisfies Config;
