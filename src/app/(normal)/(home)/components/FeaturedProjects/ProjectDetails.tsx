@@ -4,9 +4,9 @@ import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Parse from "html-react-parser";
-import { Chip } from "@heroui/react";
 import Image from "next/image";
-import { Tooltip } from "antd";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface TProjectDetails {
   project: TProjectData;
@@ -17,16 +17,16 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
   return (
     <div className="h-[86vh] overflow-y-scroll">
       <div
-        className={`w-full bg-cover bg-top  relative h-[200px] md:h-[470px] transition-all   hover:bg-bottom linear  bg-image-scroll`}
+        className={`w-full bg-cover bg-top  relative h-50 md:h-117.5 transition-all   hover:bg-bottom linear  bg-image-scroll`}
         style={{
           backgroundImage: `url(${project.projectThumbnail})`,
         }}
       ></div>
       <div className="md:mt-4 mt-2 justify-center flex flex-wrap gap-1 md:gap-2">
         {project.projectTags.map((tag, index) => (
-          <Chip className="bg-white" key={`tag${index}`}>
+          <Badge className="bg-white" key={`tag${index}`}>
             {tag.title}
-          </Chip>
+          </Badge>
         ))}
       </div>
       <div className="flex gap-4 my-6 items-center justify-center">
@@ -45,8 +45,18 @@ const ProjectDetails = ({ project }: TProjectDetails) => {
         <h2 className="text-xl font-bold mb-4">Technologies used</h2>
         <div className="flex gap-2">
           {project.projectTechnologies.map((tech, index) => (
-            <Tooltip key={index} title={tech.title}>
-              <Image alt={tech.title} width={50} height={50} src={tech.icon} />
+            <Tooltip key={index}>
+              <TooltipTrigger>
+                <Image
+                  alt={tech.title}
+                  width={50}
+                  height={50}
+                  src={tech.icon}
+                />
+              </TooltipTrigger>
+              <TooltipContent side="top">
+                <p>{tech.title}</p>
+              </TooltipContent>
             </Tooltip>
           ))}
         </div>
