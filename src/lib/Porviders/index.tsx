@@ -6,6 +6,7 @@ import UserProvider from "@/context/user.provider";
 
 
 
+
 export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
 
