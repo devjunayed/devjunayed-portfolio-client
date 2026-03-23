@@ -2,7 +2,6 @@
 import Heading from "@/components/Shared/Heading";
 import validate from "@/utils/validate";
 import MessageSchema from "@/validation/message.validation";
-import { Form } from "antd";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -30,7 +29,7 @@ const ContactUs = () => {
 
     if (!valid) {
       setLoading(false);
-      errors?.forEach((error) => {
+      errors?.forEach((error: any) => {
         toast.error(error.message, {
           position: "top-center",
         });
@@ -75,7 +74,7 @@ const ContactUs = () => {
             </h1>
             <p>let me know how can i assist you</p>
           </div>
-          <Form>
+          <form>
             <div className="flex flex-col gap-4">
               <input
                 name="name"
@@ -108,7 +107,7 @@ const ContactUs = () => {
                 {loading ? "Sending..." : "Send Message"}
               </button>
             </div>
-          </Form>
+          </form>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
+import { Modal } from "@/components/ui/animated-modal";
+import { Button } from "@/components/ui/button";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import { Button, Modal } from "antd";
 import { Download } from "lucide-react";
 import React, { useState } from "react";
 
@@ -33,38 +34,40 @@ const ResumeButton = () => {
         text="My Resume"
         icon={<Download />}
       />
-      <Modal
-        className="bg-transparent"
-        title={"Md Junayed's Resume"}
-        width={{
-          xs: "95%",
-          sm: "85%",
-          md: "75%",
-          lg: "55%",
-          xl: "55%",
-          xxl: "55%",
-        }}
-        style={{ backgroundColor: "transparent", top: 20 }}
-        open={modalOpen}
-        onCancel={onCancel}
-        footer={[
-          <Button key="open" onClick={onOpenInNewTab}>
-            Open in New Tab
-          </Button>,
-          <Button key="download" type="primary" onClick={onDownload}>
-            Download
-          </Button>,
-          <Button key="close" onClick={onCancel}>
-            Close
-          </Button>,
-        ]}
+      {/* <Modal
+        // className="bg-transparent"
+        // title="Md Junayed's Resume"
+
+        // width={{
+        //   xs: "95%",
+        //   sm: "85%",
+        //   md: "75%",
+        //   lg: "55%",
+        //   xl: "55%",
+        //   xxl: "55%",
+        // }}
+        // style={{ backgroundColor: "transparent", top: 20 }}
+        // open={modalOpen}
+        setIsOpen={true}
+        // onCancel={onCancel}
+        // footer={[
+        //   <Button key="open" onClick={onOpenInNewTab}>
+        //     Open in New Tab
+        //   </Button>,
+        //   <Button key="download" type="button" onClick={onDownload}>
+        //     Download
+        //   </Button>,
+        //   <Button key="close" onClick={onCancel}>
+        //     Close
+        //   </Button>,
+        // ]}
       >
         <iframe
           className="w-full min-h-[76vh]"
           src={resumeUrl}
           allow="autoplay"
         ></iframe>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

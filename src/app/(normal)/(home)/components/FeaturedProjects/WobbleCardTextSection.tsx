@@ -1,4 +1,3 @@
-import { Chip } from "@heroui/react";
 import ProjectModal from "./ProjectModal";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { TProjectData, TProjectTag } from "@/types";
@@ -6,6 +5,7 @@ import ProjectDetails from "./ProjectDetails";
 import { IconEye } from "@tabler/icons-react";
 import { InfoIcon } from "lucide-react";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
 
 interface TWobbleCardTextSection {
   project: TProjectData;
@@ -15,7 +15,7 @@ const WobbleCardTextSection = ({ project }: TWobbleCardTextSection) => {
   const [open, setIsOpen] = useState(false);
   const [singleOpen, setIsSingleOpen] = useState(false);
   return (
-    <div className="w-full flex flex-col h-[400px] md:w-1/2 flex-grow">
+    <div className="w-full flex flex-col h-100 md:w-1/2 grow">
       {/* Title */}
       <h2 className="text-left text-lg md:text-xl lg:text-xl font-semibold tracking-[-0.015em] text-white font-mono">
         {project.projectTitle}
@@ -24,7 +24,7 @@ const WobbleCardTextSection = ({ project }: TWobbleCardTextSection) => {
       {/* Tags */}
       <div className="md:mt-4 mt-2 flex flex-wrap gap-1 md:gap-2">
         {project.projectTags.map((tag: TProjectTag, index) => (
-          <Chip key={`tag${index}`}>{tag.title}</Chip>
+          <Badge key={`tag${index}`}>{tag.title}</Badge>
         ))}
       </div>
       {/* Description */}
