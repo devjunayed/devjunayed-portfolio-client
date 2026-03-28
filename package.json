@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-client-downgraded",
+  "name": "portfolio-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,7 +20,6 @@
     "framer-motion": "^12.38.0",
     "glob": "^13.0.6",
     "html-react-parser": "^5.2.17",
-    "inflight": "^1.0.6",
     "jodit-react": "^5.3.21",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.577.0",
