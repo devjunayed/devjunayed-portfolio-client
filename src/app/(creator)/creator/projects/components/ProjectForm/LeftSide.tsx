@@ -1,8 +1,8 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
 import { TProjectData } from "@/types";
 import { joditMinimalConfig } from "@/utils/joditConfig";
-import { Input, Textarea } from "@heroui/react";
 import { Code, PencilIcon, Text, View, ViewIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 const JoditEditor = dynamic(() => import("jodit-react"), {
@@ -27,11 +27,7 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
           defaultValue={formData.projectTitle}
 
           onChange={handleInputChange}
-          labelPlacement="outside"
           placeholder="Project Title"
-          endContent={
-            <PencilIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-          }
           type="text"
         />
 
@@ -42,16 +38,15 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
             value={formData.projectClientViewLink}
             onChange={handleInputChange}
             className="w-1/2"
-            labelPlacement="outside"
             placeholder="Client View Link"
-            startContent={
-              <div className="pointer-events-none flex items-center">
-                <span className="text-default-400 text-small">https://</span>
-              </div>
-            }
-            endContent={
-              <View className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-            }
+            // startContent={
+            //   <div className="pointer-events-none flex items-center">
+            //     <span className="text-default-400 text-small">https://</span>
+            //   </div>
+            // }
+            // endContent={
+            //   <View className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+            // }
             type="text"
           />{" "}
           {/* Server View Link */}
@@ -60,16 +55,16 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
             value={formData.projectServerViewLink}
             onChange={handleInputChange}
             className=" w-1/2"
-            labelPlacement="outside"
+            // labelPlacement="outside"
             placeholder="Server View Link"
-            startContent={
-              <div className="pointer-events-none flex items-center">
-                <span className="text-default-400 text-small">https://</span>
-              </div>
-            }
-            endContent={
-              <ViewIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-            }
+            // startContent={
+            //   <div className="pointer-events-none flex items-center">
+            //     <span className="text-default-400 text-small">https://</span>
+            //   </div>
+            // }
+            // endContent={
+            //   <ViewIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+            // }
             type="text"
           />
         </div>
@@ -82,16 +77,16 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
             value={formData.projectClientCodeLink}
             onChange={handleInputChange}
             className=" w-1/2"
-            labelPlacement="outside"
+            // labelPlacement="outside"
             placeholder="Client Code Link"
-            startContent={
-              <div className="pointer-events-none flex items-center">
-                <span className="text-default-400 text-small">https://</span>
-              </div>
-            }
-            endContent={
-              <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-            }
+            // startContent={
+            //   <div className="pointer-events-none flex items-center">
+            //     <span className="text-default-400 text-small">https://</span>
+            //   </div>
+            // }
+            // endContent={
+            //   <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+            // }
             type="text"
           />
           {/* Server Code Link */}
@@ -101,30 +96,30 @@ const LeftSide = ({handleInputChange, formData, setFormData}: TLeftSide) => {
             value={formData.projectServerCodeLink}
             onChange={handleInputChange}
             className=" w-1/2"
-            labelPlacement="outside"
+            // labelPlacement="outside"
             placeholder="Server Code Link"
-            startContent={
-              <div className="pointer-events-none flex items-center">
-                <span className="text-default-400 text-small">https://</span>
-              </div>
-            }
-            endContent={
-              <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-            }
+            // startContent={
+            //   <div className="pointer-events-none flex items-center">
+            //     <span className="text-default-400 text-small">https://</span>
+            //   </div>
+            // }
+            // endContent={
+            //   <Code className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+            // }
             type="text"
           />
         </div>
         {/* Short Description */}
-        <Textarea
+        <textarea
           name="projectShortDescription"
           value={formData.projectShortDescription}
           onChange={handleInputChange}
           rows={6}
-          endContent={
-            <Text className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-          }
+          // endContent={
+          //   <Text className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+          // }
           placeholder="Project Short Description"
-        ></Textarea>
+        ></textarea>
         {/*  Description */}
 
         <div className="rounded-xl p-4 bg-white">

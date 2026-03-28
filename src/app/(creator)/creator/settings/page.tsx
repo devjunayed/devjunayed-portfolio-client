@@ -1,4 +1,4 @@
-import { Input } from '@heroui/react'
+import { Input } from "@/components/ui/input"
 
 const page = () => {
   return (
