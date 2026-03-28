@@ -54,14 +54,14 @@ const RightSide = ({
   return (
     <div className="flex  gap-2 flex-col w-3/12">
       <div className="text-center mx-auto mb-4  ">
-        <FileUpload
+        {/* <FileUpload
           initialFileUrls={formData.projectThumbnail ? [formData.projectThumbnail] : ["https://i.ibb.co/KS8tH5Y/bg-removebg-preview.png"]}
           maxUpload={1}
           resetKey={resetKey}
           imgbbUrl={`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`}
           handleFileUpload={handleFileUpload}
           className="text-white"
-        />
+        /> */}
       </div>
 
       <SelectableSearch
