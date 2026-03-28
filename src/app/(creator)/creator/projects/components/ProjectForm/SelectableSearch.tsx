@@ -1,12 +1,11 @@
 import { TProjectData } from "@/types";
 import { IconCancel } from "@tabler/icons-react";
-import { AnyObject } from "antd/es/_util/type";
 import { useState } from "react";
 
 interface TSelectableSearch {
   formData: TProjectData;
   setFormData: React.Dispatch<React.SetStateAction<TProjectData>>;
-  items: AnyObject[];
+  items: any[];
   fieldName: string;
   label: string;
   placeholder: string;
@@ -23,15 +22,15 @@ const SelectableSearch = ({
   const refinedFieldName = fieldName as keyof TProjectData;
   const [searchItem, setSearchItem] = useState("");
   const [recommendedItem, setRecommendedItem] = useState(false);
-  const filteredItems = items.filter((item: AnyObject) =>
+  const filteredItems = items.filter((item: any) =>
     item.title.toLowerCase().includes(searchItem.toLowerCase())
   );
 
-  const handleTagsChange = (field: AnyObject) => {
+  const handleTagsChange = (field: any) => {
   console.log(field)
     setFormData((prev: TProjectData) => {
       const updatedField = [
-        ...new Set([...(prev[refinedFieldName] as AnyObject[]), field]),
+        ...new Set([...(prev[refinedFieldName] as any[]), field]),
       ];
       return {
         ...prev,
@@ -42,9 +41,9 @@ const SelectableSearch = ({
     setSearchItem("")
   };
 
-  const handleTagRemove = (field: AnyObject) => {
-    const updatedField = (formData[refinedFieldName] as AnyObject[]).filter(
-      (t: AnyObject) => t !== field
+  const handleTagRemove = (field: any) => {
+    const updatedField = (formData[refinedFieldName] as any[]).filter(
+      (t: any) => t !== field
     );
     setFormData((prev: TProjectData) => ({
       ...prev,
@@ -70,7 +69,7 @@ const SelectableSearch = ({
 
       {recommendedItem && (
         <div className="flex z-50 hover:cursor-pointer absolute flex-col scrollbar-hide w-full  bg-white mt-2 h-50 overflow-y-scroll rounded text-black ">
-          {filteredItems.map((item: AnyObject, index: number) => (
+          {filteredItems.map((item: any, index: number) => (
             <div
               onClick={() => handleTagsChange(item)}
               key={index}
@@ -83,15 +82,15 @@ const SelectableSearch = ({
       )}
 
       <div className="flex flex-wrap gap-2 mt-2">
-        {(formData[refinedFieldName] as AnyObject[]).map(
-          (field: AnyObject, index: number) => (
+        {(formData[refinedFieldName] as any[]).map(
+          (field: any, index: number) => (
             <span
               className="border rounded-full px-2 p-1 flex gap-2"
               key={index}
             >
               {field.title}{" "}
               <span
-                onClick={() => handleTagRemove(field as unknown as AnyObject)}
+                onClick={() => handleTagRemove(field as unknown as any)}
                 className="cursor-pointer"
               >
                 <IconCancel />
