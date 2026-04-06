@@ -1,6 +1,15 @@
 "use client";
 import { Modal } from "@/components/ui/animated-modal";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { Download } from "lucide-react";
 import React, { useState } from "react";
@@ -29,11 +38,42 @@ const ResumeButton = () => {
 
   return (
     <div>
-      <UiVerseButton
-        onClick={() => setIsModalOpen(true)}
-        text="My Resume"
-        icon={<Download />}
-      />
+      <Dialog >
+        <DialogTrigger >
+          {" "}
+          <UiVerseButton
+            onClick={() => setIsModalOpen(true)}
+            text="My Resume"
+            icon={<Download />}
+          />
+        </DialogTrigger>
+        <DialogContent className="text-black min-w-8/12   bg-gray-500/60 ">
+          <DialogHeader >
+            <DialogTitle  className="text-white">My Resume</DialogTitle>
+            <DialogDescription className="py-2">
+              <iframe
+                className="w-full min-h-[76vh]"
+                src={resumeUrl}
+                allow="autoplay"
+              ></iframe>
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="bg-black/10">
+            <Button key="open" className="cursor-pointer" onClick={onOpenInNewTab}>
+              Open in New Tab
+            </Button>
+
+            <Button key="download" className="cursor-pointer" type="button" onClick={onDownload}>
+              Download
+            </Button>
+
+            <Button key="close" className="cursor-pointer" onClick={onCancel}>
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       {/* <Modal
         // className="bg-transparent"
         // title="Md Junayed's Resume"
