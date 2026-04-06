@@ -7,7 +7,7 @@ export default function validate(data: any, schema: any) {
         return { valid: true, errors: null };
     } catch (error) {
         if (error instanceof z.ZodError) {
-        return { valid: false, errors: error.errors };
+        return { valid: false, errors: error.message };
         }
         return { valid: false, errors: [{ message: "An unexpected error occurred" }] };
     }

@@ -27,15 +27,15 @@ const ContactUs = () => {
 
     const { valid, errors } = validate(data, MessageSchema);
 
-    if (!valid) {
-      setLoading(false);
-      errors?.forEach((error: any) => {
-        toast.error(error.message, {
-          position: "top-center",
-        });
-      });
-      return;
-    }
+    // if (!valid) {
+    //   setLoading(false);
+    //   errors?.forEach((error: any) => {
+    //     toast.error(error.message, {
+    //       position: "top-center",
+    //     });
+    //   });
+    //   return;
+    // }
 
     const response = await fetch(process.env.NEXT_PUBLIC_BASE_API + "/message", {
       method: "POST",
