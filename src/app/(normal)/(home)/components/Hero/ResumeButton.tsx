@@ -33,7 +33,7 @@ const ResumeButton = () => {
         setOpen={setIsOpen}
       >
         <iframe
-          className="w-full min-h-[76vh]"
+          className="w-full min-h-[70vh]"
           src={resumeUrl}
           allow="autoplay"
         ></iframe>

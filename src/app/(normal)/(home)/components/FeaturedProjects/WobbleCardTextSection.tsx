@@ -1,11 +1,9 @@
-import ProjectModal from "./ProjectModal";
-import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
 import { TProjectData, TProjectTag } from "@/types";
 import ProjectDetails from "./ProjectDetails";
-import { IconEye } from "@tabler/icons-react";
-import { InfoIcon } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import Modal from "@/components/ui/modal/modal";
+import { EyeIcon } from "lucide-react";
 
 interface TWobbleCardTextSection {
   project: TProjectData;
@@ -32,46 +30,39 @@ const WobbleCardTextSection = ({ project }: TWobbleCardTextSection) => {
         {project.projectShortDescription}
       </p>
 
-      {/* <div className="md:mt-4 mt-2 flex md:gap-1 items-center text-white">
-            <p>Used Tech :</p>
-            <div className="flex md:gap-1">
-              {project.projectTechnologies.map((tech, index) => (
-                <Chip variant="shadow" color="secondary" key={`tech${index}`}>
-                  {tech}
-                </Chip>
-              ))}
-            </div>
-          </div> */}
-      {/* Buttons at the bottom-left of the card */}
+    
 
       <div className=" flex gap-2 md:gap-4 justify-center items-center p-4">
-        <ProjectModal
+        <Modal
           title={project.projectTitle}
-          modalOpen={open}
-          setIsModalOpen={setIsOpen}
+          open={open}
+          setOpen={setIsOpen}
+          modalButtonText="Preview"
+          openInNewTab={true}
+          closeButton={true}
+          openInNewTabUrl={project.projectClientViewLink}
         >
           <iframe
-            className="w-full min-h-[85vh]"
+            className="w-full min-h-[70vh]"
             src={project.projectClientViewLink}
           ></iframe>
-        </ProjectModal>
-        <ProjectModal
+        </Modal>
+        <Modal
+
           title={project.projectTitle}
-          modalOpen={singleOpen}
-          setIsModalOpen={setIsSingleOpen}
+          open={singleOpen}
+          modalButtonIcon={<EyeIcon />}
+          setOpen={setIsSingleOpen}
+          modalButtonText="Details"
+          webLink={project.projectClientViewLink}
+          codeLinkClient={project.projectClientCodeLink || ""}
+          codeLinkServer={project.projectServerCodeLink || ""}
+          closeButton={true}
+
         >
           <ProjectDetails project={project} />
-        </ProjectModal>
-        <UiVerseButton
-          onClick={() => setIsOpen(true)}
-          icon={<IconEye />}
-          text="Preview"
-        />
-        <UiVerseButton
-          onClick={() => setIsSingleOpen(true)}
-          icon={<InfoIcon />}
-          text="Details"
-        />
+        </Modal>
+        
       </div>
     </div>
   );

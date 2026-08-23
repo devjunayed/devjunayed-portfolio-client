@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Shared/Navbar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Md Junayed | Protfolio",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <div className=" ">
       <Navbar />
-      {children}
+      <TooltipProvider>{children}</TooltipProvider>
     </div>
   );
 }

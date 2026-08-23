@@ -6,7 +6,7 @@ const UiVerseButton = ({
   href,
   icon,
   text,
-  onClick
+  onClick,
 }: {
   href?: string;
   icon: React.ReactNode;
@@ -21,10 +21,12 @@ const UiVerseButton = ({
           <span className="uiverse-button__icon">{icon}</span>
         </Link>
       ) : (
-        <button onClick={onClick} className="uiverse-button">
-          <span className="uiverse-button__text">{text}</span>
-          <span className="uiverse-button__icon">{icon}</span>
-        </button>
+      
+          <button onClick={onClick} className="uiverse-button">
+            <span className="uiverse-button__text">{text}</span>
+            <span className="uiverse-button__icon">{icon}</span>
+          </button>
+       
       )}
     </>
   );
