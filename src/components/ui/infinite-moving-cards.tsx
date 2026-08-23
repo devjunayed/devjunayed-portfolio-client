@@ -25,7 +25,6 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-
   useEffect(() => {
     addAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,70 +48,68 @@ export const InfiniteMovingCards = ({
   }
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        direction === "left" ? "forwards" : "reverse",
+      );
     }
   };
   const getSpeed = () => {
     if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
-      }
+      const duration =
+        speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
+      containerRef.current.style.setProperty("--animation-duration", duration);
     }
   };
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-        className
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          start && "animate-scroll",
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items?.map((item, idx) => (
           <li
-            className="w-[250px] lg:w-[310px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-2 py-2 md:w-[400px]"
+            key={item.skillName + idx}
+            className="group relative w-[280px] h-[220px] mx-1 lg:w-[310px] max-w-full flex-shrink-0 rounded-2xl border border-slate-700 px-4 py-4 md:w-[400px] z-10 hover:z-30 transition-transform duration-300 ease-in-out hover:scale-110"
             style={{
               background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
+                "linear-gradient(180deg, var(--slate-800), var(--slate-900))",
             }}
-            key={item.skillName}
           >
             <div className="text-center mb-2 flex justify-center">
-              <img src={`https://skillicons.dev/icons?i=${item.icon}`} alt={item.skillName} />
+              <img
+                src={`https://skillicons.dev/icons?i=${item.icon}`}
+                alt={item.skillName}
+              />
             </div>
+
             <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5  -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <h3 className="text-center text-white font-bold text-lg">{item.skillName}</h3>
-              <span className=" text-center relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
-                <p className="text-center  overflow-y-scroll">
-                &#34;{item.description}&#34;
-                  </p>
-              </span>
-              
+              <h3 className="text-center text-white font-bold text-lg">
+                {item.skillName}
+              </h3>
+
+              <div className="relative mt-1 h-[70px]">
+                {/* clamped version - natural height, top-pinned only */}
+                <p className="absolute top-0 left-0 right-0 text-center text-sm leading-[1.6] text-gray-100 font-normal line-clamp-2 transition-opacity duration-300 ease-in-out group-hover:opacity-0">
+                  &#34;{item.description}&#34;
+                </p>
+
+                {/* full version - fades in on hover, fills the box */}
+                <p className="absolute inset-0 text-center text-sm leading-[1.6] text-gray-100 font-normal opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+                  &#34;{item.description}&#34;
+                </p>
+              </div>
             </blockquote>
           </li>
         ))}
