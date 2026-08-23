@@ -10,11 +10,19 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
-import { Download } from "lucide-react";
+import { BookOpen, Download } from "lucide-react";
 import React, { useState } from "react";
 
 type ModalProps = {
   title?: string;
+
+  modalButtonText?: string;
+  modalButtonIcon?: React.ReactNode;
+
+
+  open?: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
   children?: React.ReactNode;
 
   openInNewTab?: boolean;
@@ -31,6 +39,10 @@ type ModalProps = {
 
 const Modal = ({
   title,
+  modalButtonText,
+  modalButtonIcon,
+  open,
+  setOpen,
   children,
   openInNewTab,
   openInNewTabText,
@@ -41,7 +53,6 @@ const Modal = ({
   closeButton,
   closeButtonText,
 }: ModalProps) => {
-  const [modalOpen, setIsModalOpen] = useState(false);
 
   const onDownload = () => {
     if (downloadUrl?.length !== 0 && downloadUrl !== undefined) {
@@ -49,9 +60,6 @@ const Modal = ({
     }
   };
 
-  const onCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const onOpenInNewTab = () => {
     window.open(openInNewTabUrl, "_blank");
@@ -59,13 +67,17 @@ const Modal = ({
 
   return (
     <div>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger>
           {" "}
           <UiVerseButton
-            onClick={() => setIsModalOpen(true)}
-            text="My Resume"
-            icon={<Download />}
+            onClick={() => setOpen(true)}
+            text={
+              modalButtonText?.length !== 0 && modalButtonText !== undefined
+                ? modalButtonText
+                : "Open Modal"
+            }
+            icon={modalButtonIcon ?? <BookOpen />}
           />
         </DialogTrigger>
         <DialogContent className="text-black min-w-8/12   bg-gray-500/60 ">
@@ -95,9 +107,9 @@ const Modal = ({
               </Button>
             )}
 
-            {closeButton && (
-              <Button key="close" className="cursor-pointer" onClick={onCancel}>
-                {closeButtonText?.length !== 0 ? closeButtonText : "Close"}
+            {closeButton && closeButton !== undefined && (
+              <Button key="close" className="cursor-pointer" onClick={()=> setOpen(!open)}>
+                { closeButtonText ?? "Close"}
               </Button>
             )}
           </DialogFooter>

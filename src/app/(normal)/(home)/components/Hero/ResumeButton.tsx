@@ -1,21 +1,11 @@
 "use client";
-import { Modal } from "@/components/ui/animated-modal";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import UiVerseButton from "@/components/ui/LinkButton/UiVerseButton";
+
+import Modal from "@/components/ui/modal/modal";
 import { Download } from "lucide-react";
 import React, { useState } from "react";
 
 const ResumeButton = () => {
-  const [modalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const resumeOriginalUrl =
     "https://drive.google.com/file/d/1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR/view?usp=sharing";
@@ -24,90 +14,31 @@ const ResumeButton = () => {
   const downloadUrl =
     "https://drive.usercontent.google.com/u/0/uc?id=1xJkrc8C28eoSqYr5or6VpOcZqMdSb4rR&export=download";
 
-  const onDownload = () => {
-    window.location.href = downloadUrl;
-  };
-
-  const onCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const onOpenInNewTab = () => {
-    window.open(resumeOriginalUrl, "_blank");
-  };
+ 
 
   return (
     <div>
-      <Dialog >
-        <DialogTrigger >
-          {" "}
-          <UiVerseButton
-            onClick={() => setIsModalOpen(true)}
-            text="My Resume"
-            icon={<Download />}
-          />
-        </DialogTrigger>
-        <DialogContent className="text-black min-w-8/12   bg-gray-500/60 ">
-          <DialogHeader >
-            <DialogTitle  className="text-white">My Resume</DialogTitle>
-            <DialogDescription className="py-2">
-              <iframe
-                className="w-full min-h-[76vh]"
-                src={resumeUrl}
-                allow="autoplay"
-              ></iframe>
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="bg-black/10">
-            <Button key="open" className="cursor-pointer" onClick={onOpenInNewTab}>
-              Open in New Tab
-            </Button>
-
-            <Button key="download" className="cursor-pointer" type="button" onClick={onDownload}>
-              Download
-            </Button>
-
-            <Button key="close" className="cursor-pointer" onClick={onCancel}>
-              Close
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* <Modal
-        // className="bg-transparent"
-        // title="Md Junayed's Resume"
-
-        // width={{
-        //   xs: "95%",
-        //   sm: "85%",
-        //   md: "75%",
-        //   lg: "55%",
-        //   xl: "55%",
-        //   xxl: "55%",
-        // }}
-        // style={{ backgroundColor: "transparent", top: 20 }}
-        // open={modalOpen}
-        setIsOpen={true}
-        // onCancel={onCancel}
-        // footer={[
-        //   <Button key="open" onClick={onOpenInNewTab}>
-        //     Open in New Tab
-        //   </Button>,
-        //   <Button key="download" type="button" onClick={onDownload}>
-        //     Download
-        //   </Button>,
-        //   <Button key="close" onClick={onCancel}>
-        //     Close
-        //   </Button>,
-        // ]}
+      <Modal
+        closeButton={true}
+        title="Md Junayed's Resume"
+        modalButtonText="My Resume"
+        modalButtonIcon={<Download />}
+        openInNewTab={true}
+        openInNewTabText="Open in New Tab"
+        openInNewTabUrl={resumeOriginalUrl}
+        download={true}
+        downloadText="Download"
+        downloadUrl={downloadUrl}
+        open={isOpen}
+        setOpen={setIsOpen}
       >
         <iframe
           className="w-full min-h-[76vh]"
           src={resumeUrl}
           allow="autoplay"
         ></iframe>
-      </Modal> */}
+      </Modal>
+     
     </div>
   );
 };
